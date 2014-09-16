@@ -164,7 +164,7 @@ namespace SkyWatcher
             this.Name = "MainForm";
             this.Text = "SkyWatcher v1.0";
             this.textBox1.BringToFront();
-            this.KeyDown += new System.EventHandler(this.ChangeLocation);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ChangeLocation);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
