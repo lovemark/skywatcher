@@ -20,7 +20,7 @@ namespace SkyWatcher {
     [ComVisible(true)]
     public class Star : SkyObject {
         public static int readystars;
-        public static int totalstars = 240;
+        public static int totalstars = 252;
         public double RA;
         public double Dec;
         public bool IsNamed {
@@ -433,7 +433,7 @@ namespace SkyWatcher {
             value[190] = new Constellation("Camelopardalis", 191, 195);
             value[197] = new Constellation("Cancer", 196, 223);
             value[224] = new Constellation("Canes Venatici", 225, 229);
-            value[230] = new Constellation("Canis Major", 231, 239);
+            value[230] = new Constellation("Canis Major", 231, 251);
             
             // If you have new SkyObjects, insert them in this method or in the following methods.
             // Examples:
