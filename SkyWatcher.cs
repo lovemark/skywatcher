@@ -406,6 +406,18 @@ namespace SkyWatcher {
             value[237] = new Star("Eta Canis Majoris", 447, -29);
             value[238] = new Star("Theta Canis Majoris", 407, -12);
             value[239] = new Star("Iota Canis Majoris", 413, 13);
+            value[240] = new Star("Kappa Canis Majoris", 405, -33);
+            value[241] = new Star("Lambda Canis Majoris", 387, -33);
+            value[242] = new Star("Mu Canis Majoris", 413, -14);
+            value[243] = new Star("Nu Canis Majoris", 411, -19);
+            value[244] = new Star("Csi Canis Majoris", 409, -24);
+            value[245] = new Star("Omicron 1 Canis Majoris", 413, -24);
+            value[246] = new Star("Omicron 2 Canis Majoris", 423, -24);
+            value[247] = new Star("Pi Canis Majoris", 413, -20);
+            value[248] = new Star("R Canis Majoris", 380, -16);
+            value[249] = new Star("Sigma Canis Majoris", 362, -28);
+            value[250] = new Star("Tau Canis Majoris", 441, -25);
+            value[251] = new Star("Omega Canis Majoris", 399, -27);
             
             // Initialize constellations
             value[0] = new Constellation("Andromeda", 1, 21);
@@ -421,7 +433,7 @@ namespace SkyWatcher {
             value[190] = new Constellation("Camelopardalis", 191, 195);
             value[197] = new Constellation("Cancer", 196, 223);
             value[224] = new Constellation("Canes Venatici", 225, 229);
-            value[230] = new Constellation("Canis Major", 231, 237);
+            value[230] = new Constellation("Canis Major", 231, 239);
             
             // If you have new SkyObjects, insert them in this method or in the following methods.
             // Examples:
