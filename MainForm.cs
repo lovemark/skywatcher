@@ -1,5 +1,6 @@
 
 using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -8,7 +9,7 @@ namespace SkyWatcher
     /// <summary>
     /// The main form of the application.
     /// </summary>
-    public partial class MainForm : Form
+    public partial class MainForm : Form, IContainer
     {
         const string degreeChar = "\u00b0";
         const string nl = "\r\n";
@@ -33,14 +34,14 @@ namespace SkyWatcher
             // The InitializeComponent() call is required for Windows Forms designer support.
             //
             InitializeComponent();
-            
+
             //
             // TODO: Add constructor code after the InitializeComponent() call.
             //
             SkyPositionX = (int)(x);
             SkyPositionY = (int)(y);
             InitializeDataGridView();
-            
+
             // Remove remainders for correct positioning
             double xrem = Math.IEEERemainder(SkyPositionX, 60);
             double yrem = Math.IEEERemainder(SkyPositionY, 10);
@@ -67,7 +68,7 @@ namespace SkyWatcher
             SkyPositionX = (int)(x);
             SkyPositionY = (int)(y);
             InitializeDataGridView();
-            
+
             // Remove remainders for correct positioning
             double xrem = Math.IEEERemainder(SkyPositionX, 60);
             double yrem = Math.IEEERemainder(SkyPositionY, 10);
@@ -157,10 +158,13 @@ namespace SkyWatcher
             Star result = (Star)(SkyObjectLibrary.Search(searchText));
             int x = (int)(result.RA * 60);
             int y = (int)(result.Dec);
+            if (y < -60) {
+                y = -60;
+            }
             SkyPositionX = (int)(x);
             SkyPositionY = (int)(y);
             StartChangingLocation();
-            
+
             // Remove remainders for correct positioning
             double xrem = Math.IEEERemainder(SkyPositionX, 60);
             double yrem = Math.IEEERemainder(SkyPositionY, 10);
@@ -185,8 +189,9 @@ namespace SkyWatcher
             Form starInfo = new Form();
             starInfo.Text = "Details of " + source.Name;
             starInfo.Icon = Icon;
-            starInfo.Size = new Size(Width, 170);
-            starInfo.Location = new Point(Left, Bottom);
+            starInfo.Size = new Size(730, 170);
+            starInfo.Location = Location;
+            starInfo.Location.Offset(0, Height);
             Star target = (Star)(SkyObjectLibrary.Search(source.Name));
             Label label = new Label();
             label.AutoSize = true;
@@ -210,13 +215,13 @@ namespace SkyWatcher
             StartChangingLocation();
             int middle_ra = (SkyPositionX - 1) / 60;
             if (middle_ra < 0) middle_ra += 24;
-			label1.Text = (SkyPositionX / 60) + "h";
-			label2.Text = middle_ra + "h";
-			label3.Text = SkyPositionY + degreeChar;
-			label4.Text = (SkyPositionY - 10) + degreeChar;
-			label5.Text = (SkyPositionY - 20) + degreeChar;
-			InitializeDataGridView();
-			MakeStars();
+            label1.Text = (SkyPositionX / 60) + "h";
+            label2.Text = middle_ra + "h";
+            label3.Text = SkyPositionY + degreeChar;
+            label4.Text = (SkyPositionY - 10) + degreeChar;
+            label5.Text = (SkyPositionY - 20) + degreeChar;
+            InitializeDataGridView();
+            MakeStars();
         }
         public void OpenSettingsForm() {
             if (!OpenedSettingsForm) {
@@ -273,5 +278,39 @@ namespace SkyWatcher
             }
             return return_value;
         }
+
+        public void Add(IComponent component)
+        {
+            if (!(component is Control)) {
+                return;
+            }
+            Controls.Add((Control)(component));
+        }
+        
+        public void Add(IComponent component, string name)
+        {
+            if (!(component is Control)) {
+                return;
+            }
+            Controls.Add((Control)(component));
+        }
+        
+        public void Remove(IComponent component)
+        {
+            if (!(component is Control)) {
+                return;
+            }
+            Controls.Remove((Control)(component));
+        }
+        
+    	public ComponentCollection Components {
+    		get {
+                Component[] result = new Component[Controls.Count];
+                for (int i = 0; i < Controls.Count; i++) {
+                    result[i] = Controls[i];
+                }
+                return new ComponentCollection(result);
+    		}
+    	}
     }
 }
