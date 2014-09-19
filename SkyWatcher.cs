@@ -8,7 +8,7 @@ namespace SkyWatcher {
     public class SkyObject {
         public string Name;
         public SkyObject() {
-        
+
         }
         public SkyObject(string name) {
             Name = name;
@@ -20,7 +20,7 @@ namespace SkyWatcher {
     [ComVisible(true)]
     public class Star : SkyObject {
         public static int readystars;
-        public static int totalstars = 252;
+        public static int totalstars = 261;
         public double RA;
         public double Dec;
         public bool IsNamed {
@@ -42,7 +42,7 @@ namespace SkyWatcher {
         public override string ToString() {
             string nl = "\r\n";
             double ra = Math.Round(RA, 3, MidpointRounding.AwayFromZero);
-            return Name + nl + "Coordinates: (" + ra + "h, " + Dec + "\u00b0" + ")" + nl; 
+            return Name + nl + "Coordinates: (" + ra + "h, " + Dec + "\u00b0" + ")" + nl;
         }
         public Point GetLocation(double relative_ra, double relative_dec) {
             double ra = relative_ra - (RA * 60);
@@ -152,7 +152,7 @@ namespace SkyWatcher {
         public static void InitializeLibrary() {
             // Create the array
             SkyObject[] value = new SkyObject[2000];
-            
+
             // Initialize stars of Andromeda
             value[1] = new Star("Alpheratz", 11, 29);
             value[2] = new Star("Beta Andromedae", 71, 35);
@@ -175,7 +175,7 @@ namespace SkyWatcher {
             value[19] = new Star("Sigma Andromedae", 23, 37);
             value[20] = new Star("Tau Andromedae", 101, 41);
             value[21] = new Star("Phi Andromedae", 70, 47);
-            
+
             // Initialize stars of Antlia
             value[23] = new Star("Alpha Antliae", 631, -31);
             value[24] = new Star("Delta Antliae", 633, -30);
@@ -187,7 +187,7 @@ namespace SkyWatcher {
             value[30] = new Star("Iota Antliae", 655, -37);
             value[31] = new Star("S Antliae", 576, -28);
             value[32] = new Star("U Antliae", 634, -39);
-            
+
             // Initialize stars of Apus
             value[34] = new Star("Alpha Apodis", 886, -79);
             value[35] = new Star("Beta Apodis", 1009, -77);
@@ -200,7 +200,7 @@ namespace SkyWatcher {
             value[42] = new Star("Iota Apodis", 1063, -70);
             value[43] = new Star("Kappa 1 Apodis", 932, -73);
             value[44] = new Star("Kappa 2 Apodis", 936, -73);
-            
+
             // Initialize stars of Aquarius
             value[46] = new Star("Alpha Aquarii", 1329, -1);
             value[47] = new Star("Beta Aquarii", 1363, -6);
@@ -227,7 +227,7 @@ namespace SkyWatcher {
             value[68] = new Star("Psi 3 Aquarii", 1399, -9);
             value[69] = new Star("Omega 1 Aquarii", 1421, -4);
             value[70] = new Star("Omega 2 Aquarii", 1424, -5);
-            
+
             // Initialize stars of Aquila
             value[72] = new Star("Altair", 1189, 9);
             value[73] = new Star("Beta Aquilae", 1194, 7);
@@ -253,7 +253,7 @@ namespace SkyWatcher {
             value[93] = new Star("Chi Aquilae", 1179, 12);
             value[94] = new Star("Phi Aquilae", 1193, 12);
             value[95] = new Star("Psi Aquilae", 1176, 13);
-            
+
             // Initialize stars of Ara
             value[97] = new Star("Alpha Arae", 1053, -50);
             value[98] = new Star("Beta Arae", 1051, -55);
@@ -272,7 +272,7 @@ namespace SkyWatcher {
             value[111] = new Star("R Arae", 1001, -57);
             value[112] = new Star("Sigma Arae", 1053, -47);
             value[113] = new Star("U Arae", 1071, -51);
-            
+
             // Initialize stars of Aries
             value[115] = new Star("Alpha Arietis", 128, 23);
             value[116] = new Star("Beta Arietis", 113, 21);
@@ -294,7 +294,7 @@ namespace SkyWatcher {
             value[132] = new Star("Sigma Arietis", 171, 15);
             value[133] = new Star("Tau Arietis", 199, 21);
             value[134] = new Star("U Arietis", 194, 15);
-            
+
             // Initialize stars of Auriga
             value[136] = new Star("Capella", 319, 45);
             value[137] = new Star("Beta Aurigae", 360, 45);
@@ -317,7 +317,7 @@ namespace SkyWatcher {
             value[154] = new Star("Sigma Aurigae", 325, 37);
             value[155] = new Star("Tau Aurigae", 352, 39);
             value[156] = new Star("UU Aurigae", 394, 38);
-            
+
             // Initialize stars of Bootes
             value[158] = new Star("Arcturus", 854, 19, ArcturusColor);
             value[159] = new Star("A Bootis", 852, 35);
@@ -344,7 +344,7 @@ namespace SkyWatcher {
             value[180] = new Star("Phi Bootis", 937, 40);
             value[181] = new Star("Psi Bootis", 904, 27);
             value[182] = new Star("Omega Bootis", 901, 25);
-            
+
             // Initialize stars of Caelum
             value[184] = new Star("Alpha Caeli", 282, -42);
             value[185] = new Star("Beta Caeli", 283, -37);
@@ -352,14 +352,14 @@ namespace SkyWatcher {
             value[187] = new Star("Delta Caeli", 270, -45);
             value[188] = new Star("Zeta Caeli", 286, -30);
             value[189] = new Star("R Caeli", 282, -38);
-            
+
             // Initialize stars of Camelopardalis
             value[191] = new Star("Alpha Camelopardalis", 293, 66);
             value[192] = new Star("Beta Camelopardalis", 300, 60);
             value[193] = new Star("Gamma Camelopardalis", 231, 71);
             value[194] = new Star("VZ Camelopardalis", 447, 83);
             value[195] = new Star("Z Camelopardalis", 511, 74);
-            
+
             // Initialize stars of Cancer
             value[197] = new Star("Alpha Cancri", 539, 12);
             value[198] = new Star("Beta Cancri", 499, 9);
@@ -388,14 +388,14 @@ namespace SkyWatcher {
             value[221] = new Star("Phi 2 Cancri", 508, 27);
             value[222] = new Star("Psi Cancri", 495, 26);
             value[223] = new Star("Omega Cancri", 480, 26);
-            
+
             // Initialize stars of Canes Venatici
             value[225] = new Star("Cor Caroli", 778, 38);
             value[226] = new Star("Beta Canum Venaticorum", 751, 42);
             value[227] = new Star("R Canum Venaticorum", 821, 40);
             value[228] = new Star("TU Canum Venaticorum", 714, 47);
             value[229] = new Star("Y Canum Venaticorum", 697, 46);
-            
+
             // Initialize stars of Canis Major
             value[231] = new Star("Sirius", 398, -17);
             value[232] = new Star("Beta Canis Majoris", 383, -18);
@@ -419,6 +419,16 @@ namespace SkyWatcher {
             value[250] = new Star("Tau Canis Majoris", 441, -25);
             value[251] = new Star("Omega Canis Majoris", 399, -27);
             
+            // Initialize stars of Canis Minor
+            value[253] = new Star("Procyon", 456, 5);
+            value[254] = new Star("Beta Canis Minoris", 445, 8);
+            value[255] = new Star("Gamma Canis Minoris", 446, 9);
+            value[256] = new Star("Delta 1 Canis Minoris", 447, 2);
+            value[257] = new Star("Delta 2 Canis Minoris", 450, 4);
+            value[257] = new Star("Delta 3 Canis Minoris", 451, 4);
+            value[259] = new Star("Epsilon Canis Minoris", 444, 9);
+            value[260] = new Star("Zeta Canis Minoris", 467, 2);
+            
             // Initialize constellations
             value[0] = new Constellation("Andromeda", 1, 21);
             value[22] = new Constellation("Antlia", 23, 32);
@@ -434,7 +444,8 @@ namespace SkyWatcher {
             value[197] = new Constellation("Cancer", 196, 223);
             value[224] = new Constellation("Canes Venatici", 225, 229);
             value[230] = new Constellation("Canis Major", 231, 251);
-            
+            value[252] = new Constellation("Canis Minor", 253, 260);
+
             // If you have new SkyObjects, insert them in this method or in the following methods.
             // Examples:
             // M 13: insert it between the comment 'Hercules' and the next empty line
@@ -445,35 +456,35 @@ namespace SkyWatcher {
             // value[157] = new Star("Psi 1 Aurigae", ra, dec);
             // This project is available on SourceForge at:
             // http://sourceforge.net/projects/skywatcher
-            
+
             // Calls to the following methods
-            InitializeLibrary2();
-            InitializeLibrary3();
-            InitializeLibrary4();
-            InitializeLibrary5();
-            InitializeLibrary6();
-            
+            InitializeLibrary2(value);
+            InitializeLibrary3(value);
+            InitializeLibrary4(value);
+            InitializeLibrary5(value);
+            InitializeLibrary6(value);
+
             Value = value;
         }
-        public static void InitializeLibrary2() {
+        public static void InitializeLibrary2(SkyObject[] value) {
             // This method is for extra constellations.
             // For technical reasons, a method only supports 20 constellations at once.
         }
-        public static void InitializeLibrary3() {
+        public static void InitializeLibrary3(SkyObject[] value) {
             // This method is for extra constellations.
             // For technical reasons, a method only supports 20 constellations at once.
         }
-        public static void InitializeLibrary4() {
+        public static void InitializeLibrary4(SkyObject[] value) {
             // This method is for extra constellations.
             // For technical reasons, a method only supports 20 constellations at once.
         }
-        public static void InitializeLibrary5() {
+        public static void InitializeLibrary5(SkyObject[] value) {
             // This method is for extra constellations.
             // For technical reasons, a method only supports 20 constellations at once.
         }
-        public static void InitializeLibrary6() {
+        public static void InitializeLibrary6(SkyObject[] value) {
             // This method is for initializing Messier objects.
-            // For technical reasons, a method only supports 20 constellation at once.
+            // For technical reasons, a method only supports 20 constellations at once.
         }
         public static Constellation Andromeda {
             get {
@@ -560,5 +571,6 @@ namespace SkyWatcher {
         }
         public static int CanisMajorLocation = 230;
         public static Color ArcturusColor = Color.FromArgb(255, 226, 0);
+        public static Color ProcyonColor = Color.FromArgb(255, 226, 0);
     }
 }
