@@ -101,7 +101,8 @@ namespace SkyWatcher
                 try {
                     Star currentStar = (Star)(SkyObjectLibrary.GetItem(i));
                     Point location = currentStar.GetLocation(SkyPositionX, SkyPositionY);
-                    if (((location.X >= minX) && (location.Y >= minY) && (location.X < maxX) && (location.Y < maxY)) || (((location.X + 7200) >= minX) && ((location.X + 7200) < maxX)) || (((location.X - 7200) >= minX) && ((location.X - 7200) < maxX))) {
+                    Point location2 = currentStar.GetLocation2(SkyPositionX, SkyPositionY);
+                    if (((location.X >= minX) && (location.Y >= minY) && (location.X < maxX) && (location.Y < maxY)) || (location2.X >= minX) && (location2.X < maxX) && (location2.Y >= minY) && (location2.Y < minY)) {
                         AddedStars++;
                         Star[] temp = AddedStarsTable;
                         AddedStarsTable = new Star[AddedStarsTable.Length + 1];
@@ -195,7 +196,12 @@ namespace SkyWatcher
             Star target = (Star)(SkyObjectLibrary.Search(source.Name));
             Label label = new Label();
             label.AutoSize = true;
-            label.Text = target + "Constellation: " + target.GetConstellation() + nl + "Best month to see (considering observation at midnight): " + target.GetBestMonth();
+            string properties = string.Empty;
+            switch (target.Properties) {
+                case StarProperties.Double: properties = nl + "This star is a binary system."; break;
+                case StarProperties.VariableMagnitude: properties = nl + "This star has variable magnitude."; break;
+            }
+            label.Text = target + "Constellation: " + target.GetConstellation() + nl + "Best month to see (considering observation at midnight): " + target.GetBestMonth() + properties;
             label.Font = new Font("Segoe UI", 18);
             starInfo.Controls.Add(label);
             starInfo.Show();
@@ -303,14 +309,19 @@ namespace SkyWatcher
             Controls.Remove((Control)(component));
         }
         
-    	public ComponentCollection Components {
-    		get {
+        public ComponentCollection Components {
+            get {
                 Component[] result = new Component[Controls.Count];
                 for (int i = 0; i < Controls.Count; i++) {
                     result[i] = Controls[i];
                 }
                 return new ComponentCollection(result);
-    		}
-    	}
+            }
+        }
+        protected override void OnLoad(EventArgs e)
+        {
+            button1.PerformClick();
+            button1.PerformClick();
+        }
     }
 }
