@@ -301,7 +301,7 @@ namespace SkyWatcher {
             // Initialize stars of Aries
             value[115] = new Star("Alpha Arietis", 128, 23);
             value[116] = new Star("Beta Arietis", 113, 21);
-            value[117] = new Star("Gamma Arietis", 111, 19);
+            value[117] = new Star("Gamma Arietis", 111, 19, StarProperties.Double);
             value[118] = new Star("Delta Arietis", 196, 20);
             value[119] = new Star("Epsilon Arietis", 179, 21);
             value[120] = new Star("Zeta Arietis", 197, 21);
@@ -309,12 +309,12 @@ namespace SkyWatcher {
             value[122] = new Star("Theta Arietis", 134, 20);
             value[123] = new Star("Iota Arietis", 119, 18);
             value[124] = new Star("Kappa Arietis", 128, 22);
-            value[125] = new Star("Lambda Arietis", 119, 23);
+            value[125] = new Star("Lambda Arietis", 119, 23, StarProperties.Double);
             value[126] = new Star("Mu Arietis", 161, 20);
             value[127] = new Star("Nu Arietis", 157, 22);
             value[128] = new Star("Csi Arietis", 142, 10);
             value[129] = new Star("Omicron Arietis", 165, 15);
-            value[130] = new Star("Pi Arietis", 168, 17);
+            value[130] = new Star("Pi Arietis", 168, 17, StarProperties.Double);
             value[131] = new Star("Rho Arietis", 173, 18);
             value[132] = new Star("Sigma Arietis", 171, 15);
             value[133] = new Star("Tau Arietis", 199, 21);
@@ -322,49 +322,49 @@ namespace SkyWatcher {
 
             // Initialize stars of Auriga
             value[136] = new Star("Capella", 319, 45);
-            value[137] = new Star("Beta Aurigae", 360, 45);
+            value[137] = new Star("Beta Aurigae", 360, 45, StarProperties.VariableMagnitude);
             value[138] = new Star("Delta Aurigae", 360, 54);
-            value[139] = new Star("Epsilon Aurigae", 302, 43);
-            value[140] = new Star("Zeta Aurigae", 302, 41);
+            value[139] = new Star("Epsilon Aurigae", 302, 43, StarProperties.VariableMagnitude);
+            value[140] = new Star("Zeta Aurigae", 302, 41, StarProperties.VariableMagnitude);
             value[141] = new Star("Eta Aurigae", 304, 41);
-            value[142] = new Star("Theta Aurigae", 360, 38);
+            value[142] = new Star("Theta Aurigae", 360, 38, StarProperties.Double);
             value[143] = new Star("Kappa Aurigae", 370, 29);
-            value[144] = new Star("Lambda Aurigae", 320, 40);
+            value[144] = new Star("Lambda Aurigae", 320, 40, StarProperties.Double);
             value[145] = new Star("Mu Aurigae", 310, 39);
             value[146] = new Star("Nu Aurigae", 354, 39);
             value[147] = new Star("Csi Aurigae", 355, 55);
             value[148] = new Star("Omicron Aurigae", 341, 50);
             value[149] = new Star("Pi Aurigae", 360, 46);
-            value[150] = new Star("PU Aurigae", 321, 43);
+            value[150] = new Star("PU Aurigae", 321, 43, StarProperties.VariableMagnitude);
             value[151] = new Star("Rho Aurigae", 324, 41);
-            value[152] = new Star("R Aurigae", 319, 53);
-            value[153] = new Star("RT Aurigae", 385, 30);
+            value[152] = new Star("R Aurigae", 319, 53, StarProperties.VariableMagnitude);
+            value[153] = new Star("RT Aurigae", 385, 30, StarProperties.Double | StarProperties.VariableMagnitude);
             value[154] = new Star("Sigma Aurigae", 325, 37);
-            value[155] = new Star("Tau Aurigae", 352, 39);
-            value[156] = new Star("UU Aurigae", 394, 38);
+            value[155] = new Star("Tau Aurigae", 352, 39, StarProperties.Double);
+            value[156] = new Star("UU Aurigae", 394, 38, StarProperties.Double | StarProperties.VariableMagnitude);
 
             // Initialize stars of Bootes
             value[158] = new Star("Arcturus", 854, 19, ArcturusColor);
             value[159] = new Star("A Bootis", 852, 35);
             value[160] = new Star("Beta Bootis", 901, 40);
-            value[161] = new Star("Gamma Bootis", 869, 38);
-            value[162] = new Star("Delta Bootis", 911, 33);
-            value[163] = new Star("Epsilon Bootis", 881, 27);
+            value[161] = new Star("Gamma Bootis", 869, 38, StarProperties.Double);
+            value[162] = new Star("Delta Bootis", 911, 33, StarProperties.Double);
+            value[163] = new Star("Epsilon Bootis", 881, 27, StarProperties.Double);
             value[164] = new Star("Zeta Bootis", 883, 13);
             value[165] = new Star("Eta Bootis", 837, 19);
             value[166] = new Star("Theta Bootis", 859, 52);
-            value[167] = new Star("Iota Bootis", 851, 51);
-            value[168] = new Star("Kappa Bootis", 849, 52);
+            value[167] = new Star("Iota Bootis", 851, 51, StarProperties.Double);
+            value[168] = new Star("Kappa Bootis", 849, 52, StarProperties.Double);
             value[169] = new Star("Lambda Bootis", 853, 46);
-            value[170] = new Star("Mu Bootis", 921, 37);
+            value[170] = new Star("Mu Bootis", 921, 37, StarProperties.Double);
             value[171] = new Star("Nu 1 Bootis", 932, 41);
-            value[172] = new Star("Nu 2 Bootis", 933, 41);
-            value[173] = new Star("Csi Bootis", 887, 19);
+            value[172] = new Star("Nu 2 Bootis", 933, 41, StarProperties.Double);
+            value[173] = new Star("Csi Bootis", 887, 19, StarProperties.Double);
             value[174] = new Star("Omicron Bootis", 883, 17);
-            value[175] = new Star("Pi Bootis", 881, 16);
+            value[175] = new Star("Pi Bootis", 881, 16, StarProperties.Double);
             value[176] = new Star("Rho Bootis", 870, 30);
             value[177] = new Star("Sigma Bootis", 874, 30);
-            value[178] = new Star("Tau Bootis", 826, 17);
+            value[178] = new Star("Tau Bootis", 826, 17, StarProperties.Double);
             value[179] = new Star("Chi Bootis", 910, 29);
             value[180] = new Star("Phi Bootis", 937, 40);
             value[181] = new Star("Psi Bootis", 904, 27);
@@ -382,19 +382,19 @@ namespace SkyWatcher {
             value[191] = new Star("Alpha Camelopardalis", 293, 66);
             value[192] = new Star("Beta Camelopardalis", 300, 60);
             value[193] = new Star("Gamma Camelopardalis", 231, 71);
-            value[194] = new Star("VZ Camelopardalis", 447, 83);
-            value[195] = new Star("Z Camelopardalis", 511, 74);
+            value[194] = new Star("VZ Camelopardalis", 447, 83, StarProperties.Double | StarProperties.VariableMagnitude);
+            value[195] = new Star("Z Camelopardalis", 511, 74, StarProperties.VariableMagnitude);
 
             // Initialize stars of Cancer
             value[197] = new Star("Alpha Cancri", 539, 12);
             value[198] = new Star("Beta Cancri", 499, 9);
             value[199] = new Star("Gamma Cancri", 521, 22);
-            value[200] = new Star("Delta Cancri", 523, 18);
+            value[200] = new Star("Delta Cancri", 523, 18, StarProperties.Double);
             value[201] = new Star("Epsilon Cancri", 517, 19);
-            value[202] = new Star("Zeta Cancri", 494, 17);
+            value[202] = new Star("Zeta Cancri", 494, 17, StarProperties.Double);
             value[203] = new Star("Eta Cancri", 511, 20);
             value[204] = new Star("Theta Cancri", 509, 18);
-            value[205] = new Star("Iota Cancri", 529, 29);
+            value[205] = new Star("Iota Cancri", 529, 29, StarProperties.Double);
             value[206] = new Star("Kappa Cancri", 549, 11);
             value[207] = new Star("Lambda Cancri", 503, 24);
             value[208] = new Star("Mu Cancri", 488, 22);
@@ -403,26 +403,26 @@ namespace SkyWatcher {
             value[211] = new Star("Omicron 1 Cancri", 537, 15);
             value[212] = new Star("Omicron 2 Cancri", 538, 16);
             value[213] = new Star("Pi Cancri", 562, 15);
-            value[214] = new Star("Rho Cancri", 532, 28);
-            value[215] = new Star("R Cancri", 499, 12);
-            value[216] = new Star("RS Cancri", 490, 31);
+            value[214] = new Star("Rho Cancri", 532, 28, StarProperties.Double);
+            value[215] = new Star("R Cancri", 499, 12, StarProperties.VariableMagnitude);
+            value[216] = new Star("RS Cancri", 490, 31, StarProperties.Double | StarProperties.VariableMagnitude);
             value[217] = new Star("Sigma Cancri", 536, 33);
             value[218] = new Star("Tau Cancri", 489, 30);
             value[219] = new Star("Chi Cancri", 503, 27);
-            value[220] = new Star("Phi 1 Cancri", 508, 28);
-            value[221] = new Star("Phi 2 Cancri", 508, 27);
+            value[220] = new Star("Phi 1 Cancri", 508, 28, StarProperties.Double);
+            value[221] = new Star("Phi 2 Cancri", 508, 27, StarProperties.Double);
             value[222] = new Star("Psi Cancri", 495, 26);
             value[223] = new Star("Omega Cancri", 480, 26);
 
             // Initialize stars of Canes Venatici
-            value[225] = new Star("Cor Caroli", 778, 38);
+            value[225] = new Star("Cor Caroli", 778, 38, StarProperties.Double);
             value[226] = new Star("Beta Canum Venaticorum", 751, 42);
-            value[227] = new Star("R Canum Venaticorum", 821, 40);
-            value[228] = new Star("TU Canum Venaticorum", 714, 47);
-            value[229] = new Star("Y Canum Venaticorum", 697, 46);
+            value[227] = new Star("R Canum Venaticorum", 821, 40, StarProperties.VariableMagnitude);
+            value[228] = new Star("TU Canum Venaticorum", 714, 47, StarProperties.VariableMagnitude);
+            value[229] = new Star("Y Canum Venaticorum", 697, 46, StarProperties.VariableMagnitude);
 
             // Initialize stars of Canis Major
-            value[231] = new Star("Sirius", 398, -17);
+            value[231] = new Star("Sirius", 398, -17, StarProperties.Double);
             value[232] = new Star("Beta Canis Majoris", 383, -18);
             value[233] = new Star("Gamma Canis Majoris", 427, -16);
             value[234] = new Star("Wezen", 429, -26);
@@ -433,21 +433,21 @@ namespace SkyWatcher {
             value[239] = new Star("Iota Canis Majoris", 413, 13);
             value[240] = new Star("Kappa Canis Majoris", 405, -33);
             value[241] = new Star("Lambda Canis Majoris", 387, -33);
-            value[242] = new Star("Mu Canis Majoris", 413, -14);
-            value[243] = new Star("Nu Canis Majoris", 411, -19);
-            value[244] = new Star("Csi Canis Majoris", 409, -24);
+            value[242] = new Star("Mu Canis Majoris", 413, -14, StarProperties.Double);
+            value[243] = new Star("Nu Canis Majoris", 411, -19, StarProperties.Double);
+            value[244] = new Star("Csi Canis Majoris", 409, -24, StarProperties.Double);
             value[245] = new Star("Omicron 1 Canis Majoris", 413, -24);
             value[246] = new Star("Omicron 2 Canis Majoris", 423, -24);
-            value[247] = new Star("Pi Canis Majoris", 413, -20);
-            value[248] = new Star("R Canis Majoris", 380, -16);
-            value[249] = new Star("Sigma Canis Majoris", 362, -28);
-            value[250] = new Star("Tau Canis Majoris", 441, -25);
+            value[247] = new Star("Pi Canis Majoris", 413, -20, StarProperties.Double);
+            value[248] = new Star("R Canis Majoris", 380, -16, StarProperties.VariableMagnitude);
+            value[249] = new Star("Sigma Canis Majoris", 362, -28, StarProperties.Double);
+            value[250] = new Star("Tau Canis Majoris", 441, -25, StarProperties.Double);
             value[251] = new Star("Omega Canis Majoris", 399, -27);
             
             // Initialize stars of Canis Minor
-            value[253] = new Star("Procyon", 456, 5, ProcyonColor);
+            value[253] = new Star("Procyon", 456, 5, ProcyonColor, StarProperties.Double);
             value[254] = new Star("Beta Canis Minoris", 445, 8);
-            value[255] = new Star("Gamma Canis Minoris", 446, 9);
+            value[255] = new Star("Gamma Canis Minoris", 446, 9, StarProperties.Double);
             value[256] = new Star("Delta 1 Canis Minoris", 447, 2);
             value[257] = new Star("Delta 2 Canis Minoris", 450, 4);
             value[258] = new Star("Delta 3 Canis Minoris", 451, 4);
@@ -455,11 +455,12 @@ namespace SkyWatcher {
             value[260] = new Star("Zeta Canis Minoris", 467, 2);
             
             // Initialize stars of Capricornius
-            value[262] = new Star("Alpha 1 Capricorni", 1217, -13);
+            value[262] = new Star("Alpha 1 Capricorni", 1217, -13, StarProperties.Double);
             value[263] = new Star("Alpha 2 Capricorni", 1219, -13);
             value[264] = new Star("Beta Capricorni", 1224, -15);
             value[265] = new Star("Gamma Capricorni", 1301, -16);
             value[266] = new Star("Delta Capricorni", 1306, -14);
+            value[267] = new Star("Epsilon Capricorni", 
             
             // Initialize constellations
             value[0] = new Constellation("Andromeda", 1, 21, "Andromedae");
