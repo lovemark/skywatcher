@@ -14,3 +14,4 @@ Then I can see the forks and manually apply your pull requests to [SkyWatcher](h
 
 I also have a internal fork at luis140219/skywatcher. Do NOT pull any files to that fork.
 
+Don't push anything to the gh-pages branch unless absolutely necessary.
