@@ -16,6 +16,7 @@ namespace SkyWatcher
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -146,6 +147,19 @@ namespace SkyWatcher
             this.label5.TabIndex = 7;
             this.label5.Text = "label5";
             this.label5.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            //
+            // button2
+            //
+            this.button2.BackColor = System.Drawing.SystemColors.Control;
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(0, 527);
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += delegate(object sender, System.EventArgs e) {
+                (new PolarViewer()).Show();
+            }
             // 
             // MainForm
             // 
@@ -159,6 +173,7 @@ namespace SkyWatcher
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dataGridView1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -181,6 +196,6 @@ namespace SkyWatcher
         private DataGridViewExtension dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        
+        private System.Windows.Forms.Button button2;
     }
 }
