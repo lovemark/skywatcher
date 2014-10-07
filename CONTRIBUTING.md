@@ -10,7 +10,7 @@ Class descriptions:
 
 I recommend users to fork my repository (as said in [GitHub Help](https://help.github.com/articles/fork-a-repo)) to contribute.
 
-Then I can see the forks and manually apply your pull requests to [SkyWatcher](https://github.com/luismark/skywatcher).
+Then I (and [barbara141004](https://github.com/barbara141004)) can see the forks and manually apply your pull requests to [SkyWatcher](https://github.com/luismark/skywatcher).
 
 I also have a internal fork at luis140219/skywatcher. Do NOT pull any files to that fork.
 
