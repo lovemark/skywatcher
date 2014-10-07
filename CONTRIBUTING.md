@@ -15,3 +15,10 @@ Then I can see the forks and manually apply your pull requests to [SkyWatcher](h
 I also have a internal fork at luis140219/skywatcher. Do NOT pull any files to that fork.
 
 Don't push anything to the gh-pages branch unless absolutely necessary.
+
+Notes for Lovemark users
+------------------------
+
+If you're a member of the [Lovemark](https://github.com/lovemark) organization, use lovemark/skywatcher instead.
+
+Then [barbara141004](https://github.com/barbara141004) pulls your requests into luismark/skywatcher, NOT luis140219/skywatcher.
