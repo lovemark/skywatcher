@@ -1,6 +1,5 @@
 // SkyWatcher initialization
 
-using SkyWatcher.Properties;
 using System;
 using System.IO;
 using System.Windows.Forms;
