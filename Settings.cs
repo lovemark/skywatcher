@@ -1,5 +1,3 @@
-
-using SkyWatcher.Properties;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -32,7 +30,6 @@ namespace SkyWatcher
         }
         void MonthCalendar1DateChanged(object sender, DateRangeEventArgs e)
         {
-            Settings1.Default.BirthDate = e.Start;
             int day = e.Start.Day;
             int month = e.Start.Month;
             double temp = month * 100 + day;
@@ -42,7 +39,7 @@ namespace SkyWatcher
             if (temp < 0) temp += 12;
             int result = (int)(Math.Truncate(temp));
             textBox2.Text = StarSigns[result];
-            monthCalendar1.SetSelectionRange(Settings1.Default.BirthDate, Settings1.Default.BirthDate);
+            monthCalendar1.SetSelectionRange(e.Start, e.Start);
         }
         public string[] StarSigns = {"Aries","Taurus","Gemini","Cancer","Leo","Virgo","Libra","Scorpius","Sagittarius","Capricornus","Aquarius","Pisces"};
         public void GoToStarSign(object sender, EventArgs e) {
@@ -72,3 +69,4 @@ namespace SkyWatcher
         }
     }
 }
+
