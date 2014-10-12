@@ -29,4 +29,4 @@ Astronomy rules
 ---------------
 
 - Do not put lowercase letters at the start of star names. So, instead of "a Carinae", I use `LuisStar-0290`.
-- Put always the *best* possible name available. For example, instead of using 58 Orionis or Alpha Orionis, use Betelgeuse.
+- Put always the **best** possible name available. For example, instead of using 58 Orionis or Alpha Orionis, use Betelgeuse.
