@@ -20,7 +20,7 @@ namespace SkyWatcher {
     [ComVisible(true)]
     public class Star : SkyObject {
         public static int readystars;
-        public static int totalstars = 261;
+        public static int totalstars = 329;
         public double RA;
         public double RA2;
         public double Dec;
@@ -498,6 +498,33 @@ namespace SkyWatcher {
             value[301] = new Star("Chi Carinae", 473, -53);
             value[302] = new Star("Omega Carinae", 621, -70);
             
+            // Initialize stars of Cassiopeia
+            value[304] = new Star("Alpha Cassiopeiae", 41, 56, StarProperties.Double);
+            value[305] = new Star("Beta Cassiopeiae", 14, 59, StarProperties.Double);
+            value[306] = new Star("Gamma Cassiopeiae", 60, 61, StarProperties.Double | StarProperties.VariableMagnitude);
+            value[307] = new Star("Delta Cassiopeiae", 83, 60, StarProperties.VariableMagnitude);
+            value[308] = new Star("Epsilon Cassiopeiae", 109, 64);
+            value[309] = new Star("Zeta Cassiopeiae", 41, 54);
+            value[310] = new Star("Eta Cassiopeiae", 51, 57, StarProperties.Double);
+            value[311] = new Star("Theta Cassiopeiae", 80, 55);
+            value[312] = new Star("Iota Cassiopeiae", 155, 68, StarProperties.Double);
+            value[313] = new Star("Kappa Cassiopeiae", 39, 63);
+            value[314] = new Star("Lambda Cassiopeiae", 36, 54, StarProperties.Double);
+            value[315] = new Star("Mu Cassiopeiae", 73, 55);
+            value[316] = new Star("Nu Cassiopeiae", 52, 51);
+            value[317] = new Star("Csi Cassiopeiae", 49, 50);
+            value[318] = new Star("Omicron Cassiopeiae", 48, 48, StarProperties.Double);
+            value[319] = new Star("Pi Cassiopeiae", 48, 47);
+            value[320] = new Star("Rho Cassiopeiae", 1434, 57, StarProperties.VariableMagnitude);
+            value[321] = new Star("R Cassiopeiae", 1437, 51, StarProperties.VariableMagnitude);
+            value[322] = new Star("RZ Cassiopeiae", 168, 70, StarProperties.VariableMagnitude);
+            value[323] = new Star("Sigma Cassiopeiae", 0, 56);
+            value[324] = new Star("Tau Cassiopeiae", 1416, 58);
+            value[325] = new Star("Chi Cassiopeiae", 90, 59);
+            value[326] = new Star("Phi Cassiopeiae", 84, 58, StarProperties.Double);
+            value[327] = new Star("Psi Cassiopeiae", 79, 68, StarProperties.Double);
+            value[328] = new Star("Omega Cassiopeiae", 117, 59);
+            
             // Initialize constellations
             value[0] = new Constellation("Andromeda", 1, 21, "Andromedae");
             value[22] = new Constellation("Antlia", 23, 32, "Antliae");
@@ -515,7 +542,8 @@ namespace SkyWatcher {
             value[230] = new Constellation("Canis Major", 231, 251, "Canis Majoris");
             value[252] = new Constellation("Canis Minor", 253, 260, "Canis Minoris");
             value[261] = new Constellation("Capricornus", 262, 286, "Capricorni");
-            value[287] = new Constellation("Carina", 288, 302)
+            value[287] = new Constellation("Carina", 288, 302, "Carinae");
+            value[303] = new Constellation("Cassiopeia", 304, 328, "Cassiopeiae");
             
             // If you have new SkyObjects, insert them in InitializeLibrary6 or in the following methods.
             // Examples:
