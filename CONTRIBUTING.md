@@ -3,6 +3,8 @@ Contributing
 
 Files that users can change are: MainForm.cs and SkyWatcher.cs.
 
+You can add a Credits.cs file to the repository (if you want to show how luis140219 (or you) is powerful).
+
 Class descriptions:
 
 - The DataGridViewExtension class is used for adding painting features to the DataGridView class.
@@ -22,3 +24,9 @@ Notes for Lovemark users
 If you're a member of the [Lovemark](https://github.com/lovemark) organization, use lovemark/skywatcher instead.
 
 Then [barbara141004](https://github.com/barbara141004) pulls your requests into luismark/skywatcher, NOT luis140219/skywatcher.
+
+Astronomy rules
+---------------
+
+- Do not put lowercase letters at the start of star names. So, instead of "a Carinae", I use `LuisStar-0290`.
+- Put always the *best* possible name available. For example, instead of using 58 Orionis or Alpha Orionis, use Betelgeuse.
