@@ -27,7 +27,7 @@ namespace SkyWatcher {
         public StarProperties Properties;
         public bool IsNamed {
             get {
-                return !(Name.Contains(" ")) || !(Name.Contains(GetConstellation().Genitive));
+                return !(Name.Contains(" ")) || !(Name.Contains(GetConstellation().Genitive)) || !(Name.Contains("LuisStar-"));
             }
         }
         public Star(string name, double ra, double dec) {
@@ -481,6 +481,23 @@ namespace SkyWatcher {
             value[285] = new Star("Psi Capricorni", 1241, -27);
             value[286] = new Star("Omega Capricorni", 1245, -28);
             
+            // Initialize stars of Carina
+            value[288] = new Star("Canopus", 392, -53);
+            value[289] = new Star("A Carinae", 410, -54);
+            value[290] = new Star("LuisStar-0290", 553, -59, StarProperties.Double);
+            value[291] = new Star("Beta Carinae", 559, -70);
+            value[292] = new Star("LuisStar-0292", 538, -61);
+            value[293] = new Star("LuisStar-0293", 529, -60, StarProperties.VariableMagnitude);
+            value[294] = new Star("Epsilon Carinae", 511, -59);
+            value[295] = new Star("LuisStar-0295", 529, -56);
+            value[296] = new Star("Eta Carinae", 650, -60, StarProperties.VariableMagnitude);
+            value[297] = new Star("LuisStar-0297", 560, -57);
+            value[298] = new Star("LuisStar-0298", 566, -59);
+            value[299] = new Star("Theta Carinae", 652, -64);
+            value[300] = new Star("G Carinae", 550, -73);
+            value[301] = new Star("Chi Carinae", 473, -53);
+            value[302] = new Star("Omega Carinae", 621, -70);
+            
             // Initialize constellations
             value[0] = new Constellation("Andromeda", 1, 21, "Andromedae");
             value[22] = new Constellation("Antlia", 23, 32, "Antliae");
@@ -498,6 +515,7 @@ namespace SkyWatcher {
             value[230] = new Constellation("Canis Major", 231, 251, "Canis Majoris");
             value[252] = new Constellation("Canis Minor", 253, 260, "Canis Minoris");
             value[261] = new Constellation("Capricornus", 262, 286, "Capricorni");
+            value[287] = new Constellation("Carina", 288, 302)
             
             // If you have new SkyObjects, insert them in InitializeLibrary6 or in the following methods.
             // Examples:
