@@ -525,6 +525,32 @@ namespace SkyWatcher {
             value[327] = new Star("Psi Cassiopeiae", 79, 68, StarProperties.Double);
             value[328] = new Star("Omega Cassiopeiae", 117, 59);
             
+            // Initialize stars of Centaurus
+            value[330] = new Star("Rigil Kentaurus", 881, -60, StarProperties.Double);
+            value[331] = new Star("Hadar", 841, -61, StarProperties.Double);
+            value[332] = new Star("Gamma Centauri", 767, -49, StarProperties.Double);
+            value[333] = new Star("Delta Centauri", 728, -51);
+            value[334] = new Star("Epsilon Centauri", 816, -54, StarProperties.Double);
+            value[335] = new Star("Zeta Centauri", 832, -47);
+            value[336] = new Star("Eta Centauri", 851, -43, StarProperties.Double);
+            value[337] = new Star("Theta Centauri", 848, -36);
+            value[338] = new Star("Iota Centauri", 805, -37, StarProperties.Double);
+            value[339] = new Star("Kappa Centauri", 900, -42, StarProperties.Double);
+            value[340] = new Star("Lambda Centauri", 695, -64);
+            value[341] = new Star("Mu Centauri", 823, -42, StarProperties.VariableMagnitude);
+            value[342] = new Star("Nu Centauri", 823, -41);
+            value[343] = new Star("Csi Centauri", 784, -50, StarProperties.Double);
+            value[344] = new Star("Omicron Centauri", 690, -60, StarProperties.Double);
+            value[345] = new Star("Pi Centauri", 687, -54, StarProperties.Double);
+            value[346] = new Star("Rho Centauri", 735, -52);
+            value[347] = new Star("R Centauri", 859, -60, StarProperties.VariableMagnitude);
+            value[348] = new Star("Sigma Centauri", 749, -50);
+            value[349] = new Star("S Centauri", 747, -49, StarProperties.VariableMagnitude);
+            value[350] = new Star("Tau Centauri", 733, -48);
+            value[351] = new Star("T Centauri", 814, -34, StarProperties.VariableMagnitude);
+            value[352] = new Star("V Centauri", 872, -57, StarProperties.VariableMagnitude);
+            value[353] = new Star("Psi Centauri", 861, -38);
+            
             // Initialize constellations
             value[0] = new Constellation("Andromeda", 1, 21, "Andromedae");
             value[22] = new Constellation("Antlia", 23, 32, "Antliae");
@@ -544,6 +570,7 @@ namespace SkyWatcher {
             value[261] = new Constellation("Capricornus", 262, 286, "Capricorni");
             value[287] = new Constellation("Carina", 288, 302, "Carinae");
             value[303] = new Constellation("Cassiopeia", 304, 328, "Cassiopeiae");
+            value[329] = new Constellation("Centaurus", 330, 353, "Centauri");
             
             // If you have new SkyObjects, insert them in InitializeLibrary6 or in the following methods.
             // Examples:
