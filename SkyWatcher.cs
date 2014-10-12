@@ -551,6 +551,12 @@ namespace SkyWatcher {
             value[352] = new Star("V Centauri", 872, -57, StarProperties.VariableMagnitude);
             value[353] = new Star("Psi Centauri", 861, -38);
             
+            // Initialize stars of Cepheus
+            value[355] = new Star("Alpha Cephei", 1246, 63);
+            value[356] = new Star("Beta Cephei", 1281, 71, StarProperties.Double | StarProperties.VariableMagnitude);
+            value[357] = new Star("Gamma Cephei", 1419, 77);
+            value[358] = new Star("Delta Cephei", 1359, 58, StarProperties.VariableMagnitude);
+            
             // Initialize constellations
             value[0] = new Constellation("Andromeda", 1, 21, "Andromedae");
             value[22] = new Constellation("Antlia", 23, 32, "Antliae");
