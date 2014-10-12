@@ -556,6 +556,22 @@ namespace SkyWatcher {
             value[356] = new Star("Beta Cephei", 1281, 71, StarProperties.Double | StarProperties.VariableMagnitude);
             value[357] = new Star("Gamma Cephei", 1419, 77);
             value[358] = new Star("Delta Cephei", 1359, 58, StarProperties.VariableMagnitude);
+            value[359] = new Star("Epsilon Cephei", 1341, 57);
+            value[360] = new Star("Zeta Cephei", 1328, 58);
+            value[361] = new Star("Eta Cephei", 1250, 62, StarProperties.Double);
+            value[362] = new Star("Theta Cephei", 1238, 63);
+            value[363] = new Star("Iota Cephei", 1375, 66);
+            value[364] = new Star("Kappa Cephei", 1209, 77, StarProperties.Double);
+            value[365] = new Star("Lambda Cephei", 1326, 60);
+            value[366] = new Star("Mu Cephei", 1295, 58, StarProperties.VariableMagnitude);
+            value[367] = new Star("Nu Cephei", 1298, 62);
+            value[368] = new Star("Csi Cephei", 1321, 65, StarProperties.Double);
+            value[369] = new Star("Omicron Cephei", 1389, 68, StarProperties.Double);
+            value[370] = new Star("Pi Cephei", 1379, 76, StarProperties.Double);
+            value[371] = new Star("Rho Cephei", 1361, 78);
+            value[372] = new Star("RW Cephei", 1351, 56, StarProperties.VariableMagnitude);
+            value[373] = new Star("T Cephei", 1273, 68, StarProperties.VariableMagnitude);
+            value[374] = new Star("VV Cephei", 1314, 64, StarProperties.VariableMagnitude);
             
             // Initialize constellations
             value[0] = new Constellation("Andromeda", 1, 21, "Andromedae");
@@ -577,6 +593,7 @@ namespace SkyWatcher {
             value[287] = new Constellation("Carina", 288, 302, "Carinae");
             value[303] = new Constellation("Cassiopeia", 304, 328, "Cassiopeiae");
             value[329] = new Constellation("Centaurus", 330, 353, "Centauri");
+            value[354] = new Constellation("Cepheus", 355, 374, "Cephei");
             
             // If you have new SkyObjects, insert them in InitializeLibrary6 or in the following methods.
             // Examples:
@@ -716,6 +733,23 @@ namespace SkyWatcher {
             }
         }
         public static int CapricornusLocation = 261;
+        public static Constellation Carina {
+            get {
+                return (Constellation)(Value[CarinaLocation]);
+            }
+        }
+        public static int CarinaLocation = 287;
+        public static Constellation Cassiopeia {
+            get {
+                return (Constellation)(Value[CassiopeiaLocation]);
+            }
+        }
+        public static int CassiopeiaLocation = 303;
+        public static Constellation Centaurus {
+            get {
+                return (Constellation)(Value[CentaurusLocation]);
+            }
+        }
         public static Color ArcturusColor = Color.FromArgb(255, 226, 0);
         public static Color ProcyonColor = Color.FromArgb(255, 226, 0);
     }
