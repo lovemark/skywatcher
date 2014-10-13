@@ -573,6 +573,27 @@ namespace SkyWatcher {
             value[373] = new Star("T Cephei", 1273, 68, StarProperties.VariableMagnitude);
             value[374] = new Star("VV Cephei", 1314, 64, StarProperties.VariableMagnitude);
             
+            // Initialize stars of Cetus
+            value[376] = new Star("Alpha Ceti", 183, 4);
+            value[377] = new Star("Beta Ceti", 42, -18);
+            value[378] = new Star("Gamma Ceti", 161, 3, StarProperties.Double);
+            value[379] = new Star("Delta Ceti", 156, 0);
+            value[380] = new Star("Epsilon Ceti", 159, -12);
+            value[381] = new Star("Zeta Ceti", 112, -10);
+            value[382] = new Star("Eta Ceti", 71, -10);
+            value[383] = new Star("Theta Ceti", 85, -8);
+            value[384] = new Star("Iota Ceti", 20, -9);
+            value[385] = new Star("Kappa Ceti", 201, 3);
+            value[386] = new Star("Lambda Ceti", 180, 9);
+            value[387] = new Star("Mu Ceti", 163, 10);
+            value[388] = new Star("Nu Ceti", 153, 6, StarProperties.Double);
+            value[389] = new Star("Csi Ceti", 145, 8, StarProperties.Double);
+            value[389] = new Star("Mira", 141, -3, StarProperties.VariableMagnitude);
+            value[390] = new Star("Pi Ceti", 161, 6);
+            value[391] = new Star("Rho Ceti", 143, -12);
+            value[392] = new Star("Sigma Ceti", 153, -15);
+            value[393] = new Star("Tau Ceti", 101, -17);
+            
             // Initialize constellations
             value[0] = new Constellation("Andromeda", 1, 21, "Andromedae");
             value[22] = new Constellation("Antlia", 23, 32, "Antliae");
