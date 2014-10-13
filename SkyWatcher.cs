@@ -594,6 +594,18 @@ namespace SkyWatcher {
             value[392] = new Star("Sigma Ceti", 153, -15);
             value[393] = new Star("Tau Ceti", 101, -17);
             
+            // Initialize stars of Chamaeleon
+            value[395] = new Star("Alpha Chamaeleontis", 509, -77);
+            value[396] = new Star("Beta Chamaeleontis", 751, -79);
+            value[397] = new Star("Gamma Chamaeleontis", 640, -78);
+            value[398] = new Star("Delta Chamaeleontis", 651, -81, StarProperties.Double);
+            value[399] = new Star("Epsilon Chamaeleontis", 720, -78, StarProperties.Double);
+            value[400] = new Star("Zeta Chamaeleontis", 569, -81);
+            value[401] = new Star("Eta Chamaeleontis", 522, -79);
+            value[402] = new Star("Theta Chamaeleontis", 509, -78, StarProperties.Double);
+            value[403] = new Star("RS Chamaeleontis", 528, -79, StarProperties.VariableMagnitude);
+            value[404] = new Star("Z Chamaeleontis", 490, -77, StarProperties.VariableMagnitude);
+            
             // Initialize constellations
             value[0] = new Constellation("Andromeda", 1, 21, "Andromedae");
             value[22] = new Constellation("Antlia", 23, 32, "Antliae");
@@ -615,6 +627,8 @@ namespace SkyWatcher {
             value[303] = new Constellation("Cassiopeia", 304, 328, "Cassiopeiae");
             value[329] = new Constellation("Centaurus", 330, 353, "Centauri");
             value[354] = new Constellation("Cepheus", 355, 374, "Cephei");
+            value[375] = new Constellation("Cetus", 376, 393, "Ceti");
+            value[394] = new Constellation("Chamaeleon", 395, 404, "Chamaeleontis")
             
             // If you have new SkyObjects, insert them in InitializeLibrary6 or in the following methods.
             // Examples:
