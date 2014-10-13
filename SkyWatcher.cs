@@ -573,6 +573,51 @@ namespace SkyWatcher {
             value[373] = new Star("T Cephei", 1273, 68, StarProperties.VariableMagnitude);
             value[374] = new Star("VV Cephei", 1314, 64, StarProperties.VariableMagnitude);
             
+            // Initialize constellations
+            value[0] = new Constellation("Andromeda", 1, 21, "Andromedae");
+            value[22] = new Constellation("Antlia", 23, 32, "Antliae");
+            value[33] = new Constellation("Apus", 34, 44, "Apodis");
+            value[45] = new Constellation("Aquarius", 46, 70, "Aquarii");
+            value[71] = new Constellation("Aquila", 72, 95, "Aquilae");
+            value[96] = new Constellation("Ara", 97, 113, "Arae");
+            value[114] = new Constellation("Aries", 115, 134, "Arietis");
+            value[135] = new Constellation("Auriga", 136, 156, "Aurigae");
+            value[157] = new Constellation("Bootes", 158, 182, "Bootis");
+            value[183] = new Constellation("Caelum", 184, 189, "Caeli");
+            value[190] = new Constellation("Camelopardalis", 191, 195, "Camelopardalis");
+            value[197] = new Constellation("Cancer", 196, 223, "Cancri");
+            value[224] = new Constellation("Canes Venatici", 225, 229, "Canum Venaticorum");
+            value[230] = new Constellation("Canis Major", 231, 251, "Canis Majoris");
+            value[252] = new Constellation("Canis Minor", 253, 260, "Canis Minoris");
+            value[261] = new Constellation("Capricornus", 262, 286, "Capricorni");
+            value[287] = new Constellation("Carina", 288, 302, "Carinae");
+            value[303] = new Constellation("Cassiopeia", 304, 328, "Cassiopeiae");
+            value[329] = new Constellation("Centaurus", 330, 353, "Centauri");
+            value[354] = new Constellation("Cepheus", 355, 374, "Cephei");
+            
+            // If you have new SkyObjects, insert them in InitializeLibrary6 or in the following methods.
+            // Examples:
+            // M 13: insert it between the comment 'Hercules' and the next empty line
+            // I already don't know the value of the ra and dec variables in the code below.
+            // value[2013] = new GroupAsStar("M 13", ra, dec);
+            // Psi 1 to 9 Aurigae: I've missed these stars.
+            // Insert in InitializeLibrary7 (example and with ra and dec values unknown):
+            // value[2120] = new Star("Psi 1 Aurigae", ra, dec);
+            // This project is available on SourceForge at:
+            // http://sourceforge.net/projects/skywatcher
+            // I have an issue (#3). Do a pull request in https://github.com/luismark/skywatcher
+            // before the 12nd of October.
+            
+            // Calls to the following methods
+            InitializeLibrary2(value);
+            InitializeLibrary3(value);
+            InitializeLibrary4(value);
+            InitializeLibrary5(value);
+            InitializeLibrary6(value);
+            
+            Value = value;
+        }
+        public static void InitializeLibrary2(SkyObject[] value) {
             // Initialize stars of Cetus
             value[376] = new Star("Alpha Ceti", 183, 4);
             value[377] = new Star("Beta Ceti", 42, -18);
@@ -606,55 +651,20 @@ namespace SkyWatcher {
             value[403] = new Star("RS Chamaeleontis", 528, -79, StarProperties.VariableMagnitude);
             value[404] = new Star("Z Chamaeleontis", 490, -77, StarProperties.VariableMagnitude);
             
-            // Initialize constellations
-            value[0] = new Constellation("Andromeda", 1, 21, "Andromedae");
-            value[22] = new Constellation("Antlia", 23, 32, "Antliae");
-            value[33] = new Constellation("Apus", 34, 44, "Apodis");
-            value[45] = new Constellation("Aquarius", 46, 70, "Aquarii");
-            value[71] = new Constellation("Aquila", 72, 95, "Aquilae");
-            value[96] = new Constellation("Ara", 97, 113, "Arae");
-            value[114] = new Constellation("Aries", 115, 134, "Arietis");
-            value[135] = new Constellation("Auriga", 136, 156, "Aurigae");
-            value[157] = new Constellation("Bootes", 158, 182, "Bootis");
-            value[183] = new Constellation("Caelum", 184, 189, "Caeli");
-            value[190] = new Constellation("Camelopardalis", 191, 195, "Camelopardalis");
-            value[197] = new Constellation("Cancer", 196, 223, "Cancri");
-            value[224] = new Constellation("Canes Venatici", 225, 229, "Canum Venaticorum");
-            value[230] = new Constellation("Canis Major", 231, 251, "Canis Majoris");
-            value[252] = new Constellation("Canis Minor", 253, 260, "Canis Minoris");
-            value[261] = new Constellation("Capricornus", 262, 286, "Capricorni");
-            value[287] = new Constellation("Carina", 288, 302, "Carinae");
-            value[303] = new Constellation("Cassiopeia", 304, 328, "Cassiopeiae");
-            value[329] = new Constellation("Centaurus", 330, 353, "Centauri");
-            value[354] = new Constellation("Cepheus", 355, 374, "Cephei");
+            // Initialize stars of Circinus
+            value[406] = new Star("Alpha Circini", 891, -66, StarProperties.Double);
+            value[407] = new Star("Beta Circini", 909, -59);
+            value[408] = new Star("Gamma Circini", 913, -59, StarProperties.Double);
+            value[409] = new Star("Delta Circini", 913, -62);
+            value[410] = new Star("Epsilon Circini", 906, -64);
+            value[411] = new Star("Zeta Circini", 896, -66);
+            value[412] = new Star("Eta Circini", 899, -64);
+            value[413] = new Star("Theta Circini", 894, -63, StarProperties.Double);
+            
+            // Initialize constellations (second time)
             value[375] = new Constellation("Cetus", 376, 393, "Ceti");
-            value[394] = new Constellation("Chamaeleon", 395, 404, "Chamaeleontis")
-            
-            // If you have new SkyObjects, insert them in InitializeLibrary6 or in the following methods.
-            // Examples:
-            // M 13: insert it between the comment 'Hercules' and the next empty line
-            // I already don't know the value of the ra and dec variables in the code below.
-            // value[2013] = new GroupAsStar("M 13", ra, dec);
-            // Psi 1 to 9 Aurigae: I've missed these stars.
-            // Insert in InitializeLibrary7 (example and with ra and dec values unknown):
-            // value[2120] = new Star("Psi 1 Aurigae", ra, dec);
-            // This project is available on SourceForge at:
-            // http://sourceforge.net/projects/skywatcher
-            // I have an issue (#3). Do a pull request in https://github.com/luismark/skywatcher
-            // before the 12nd of October.
-            
-            // Calls to the following methods
-            InitializeLibrary2(value);
-            InitializeLibrary3(value);
-            InitializeLibrary4(value);
-            InitializeLibrary5(value);
-            InitializeLibrary6(value);
-            
-            Value = value;
-        }
-        public static void InitializeLibrary2(SkyObject[] value) {
-            // This method is for extra constellations.
-            // For technical reasons, a method only supports 20 constellations at once.
+            value[394] = new Constellation("Chamaeleon", 395, 404, "Chamaeleontis");
+            value[405] = new Constellation("Circinus", 406, 413, "Circini");
         }
         public static void InitializeLibrary3(SkyObject[] value) {
             // This method is for extra constellations.
