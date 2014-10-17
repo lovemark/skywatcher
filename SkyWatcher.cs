@@ -661,10 +661,29 @@ namespace SkyWatcher {
             value[412] = new Star("Eta Circini", 899, -64);
             value[413] = new Star("Theta Circini", 894, -63, StarProperties.Double);
             
+            // Initialize stars of Columba
+            value[415] = new Star("Alpha Columbae", 326, -34, StarProperties.Double);
+            value[416] = new Star("Beta Columbae", 344, -36);
+            value[417] = new Star("Gamma Columbae", 358, -36);
+            value[418] = new Star("Delta Columbae", 385, -34);
+            value[419] = new Star("Epsilon Columbae", 327, -36);
+            value[420] = new Star("Eta Columbae", 358, -43);
+            value[421] = new Star("Theta Columbae", 371, -37);
+            value[422] = new Star("Kappa Columbae", 382, -36);
+            value[423] = new Star("SX Columbae", 392, -36, StarProperties.Double);
+            value[424] = new Star("T Columbae", 319, -34, StarProperties.VariableMagnitude);
+            
+            // Initialize stars of Coma Berenices
+            value[426] = new Star("Alpha Comae Berenices", 795, 17, StarProperties.Double);
+            value[427] = new Star("Beta Comae Berenices", 796, 27);
+            value[428] = new Star("Gamma Comae Berenices", 748, 28);
+            
             // Initialize constellations (second time)
             value[375] = new Constellation("Cetus", 376, 393, "Ceti");
             value[394] = new Constellation("Chamaeleon", 395, 404, "Chamaeleontis");
             value[405] = new Constellation("Circinus", 406, 413, "Circini");
+            value[414] = new Constellation("Columba", 415, 424, "Columbae");
+            value[425] = new Constellation("Coma Berenices", 426, 428, "Comae Berenices");
         }
         public static void InitializeLibrary3(SkyObject[] value) {
             // This method is for extra constellations.
@@ -795,6 +814,7 @@ namespace SkyWatcher {
                 return (Constellation)(Value[CentaurusLocation]);
             }
         }
+        public static int CentaurusLocation = 329;
         public static Color ArcturusColor = Color.FromArgb(255, 226, 0);
         public static Color ProcyonColor = Color.FromArgb(255, 226, 0);
     }
