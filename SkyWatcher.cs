@@ -693,6 +693,13 @@ namespace SkyWatcher {
             value[440] = new Star("Delta Coronae Borealis", 944, 26);
             value[441] = new Star("Epsilon Coronae Borealis", 958, 26, StarProperties.Double);
             value[442] = new Star("Theta Coronae Borealis", 931, 32);
+            value[443] = new Star("R Coronae Borealis", 940, 27, StarProperties.VariableMagnitude);
+            
+            // Initialize stars of Corvus
+            value[445] = new Star("Alpha Corvi", 735, -25);
+            value[446] = new Star("Beta Corvi", 754, -24);
+            value[447] = new Star("Gamma Corvi", 740, -17);
+            value[448] = new Star("Delta Corvi", 752, -16, StarProperties.Double);
             
             // Initialize constellations (second time)
             value[375] = new Constellation("Cetus", 376, 393, "Ceti");
@@ -701,7 +708,8 @@ namespace SkyWatcher {
             value[414] = new Constellation("Columba", 415, 424, "Columbae");
             value[425] = new Constellation("Coma Berenices", 426, 428, "Comae Berenices");
             value[429] = new Constellation("Corona Australis", 430, 435, "Corona Australis");
-            value[436] = new Constellation("Corona Borealis", 437, 442, "Coronae Borealis");
+            value[436] = new Constellation("Corona Borealis", 437, 443, "Coronae Borealis");
+            value[444] = new Constellation("Corvus", 445, 448, "Corvi");
         }
         public static void InitializeLibrary3(SkyObject[] value) {
             // This method is for extra constellations.
