@@ -526,7 +526,7 @@ namespace SkyWatcher {
             value[328] = new Star("Omega Cassiopeiae", 117, 59);
             
             // Initialize stars of Centaurus
-            value[330] = new Star("Rigil Kentaurus", 881, -60, StarProperties.Double);
+            value[330] = new Star("Rigel Kentaurus", 881, -60, StarProperties.Double);
             value[331] = new Star("Hadar", 841, -61, StarProperties.Double);
             value[332] = new Star("Gamma Centauri", 767, -49, StarProperties.Double);
             value[333] = new Star("Delta Centauri", 728, -51);
@@ -678,12 +678,30 @@ namespace SkyWatcher {
             value[427] = new Star("Beta Comae Berenices", 796, 27);
             value[428] = new Star("Gamma Comae Berenices", 748, 28);
             
+            // Initialize stars of Corona Australis
+            value[430] = new Star("Alpha Coronae Australis", 1158, -37);
+            value[431] = new Star("Beta Coronae Australis", 1158, -39);
+            value[432] = new Star("Gamma Coronae Australis", 1155, -37);
+            value[433] = new Star("Delta Coronae Australis", 1154, -41);
+            value[434] = new Star("Epsilon Coronae Australis", 1139, -37, StarProperties.VariableMagnitude);
+            value[435] = new Star("Zeta Coronae Australis", 1141, -43);
+            
+            // Initialize stars of Corona Borealis
+            value[437] = new Star("Alpha Coronae Borealis", 933, 26, StarProperties.VariableMagnitude);
+            value[438] = new Star("Beta Coronae Borealis", 928, 29);
+            value[439] = new Star("Gamma Coronae Borealis", 940, 26, StarProperties.Double);
+            value[440] = new Star("Delta Coronae Borealis", 944, 26);
+            value[441] = new Star("Epsilon Coronae Borealis", 958, 26, StarProperties.Double);
+            value[442] = new Star("Theta Coronae Borealis", 931, 32);
+            
             // Initialize constellations (second time)
             value[375] = new Constellation("Cetus", 376, 393, "Ceti");
             value[394] = new Constellation("Chamaeleon", 395, 404, "Chamaeleontis");
             value[405] = new Constellation("Circinus", 406, 413, "Circini");
             value[414] = new Constellation("Columba", 415, 424, "Columbae");
             value[425] = new Constellation("Coma Berenices", 426, 428, "Comae Berenices");
+            value[429] = new Constellation("Corona Australis", 430, 435, "Corona Australis");
+            value[436] = new Constellation("Corona Borealis", 437, 442, "Coronae Borealis");
         }
         public static void InitializeLibrary3(SkyObject[] value) {
             // This method is for extra constellations.
