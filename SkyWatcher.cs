@@ -176,7 +176,7 @@ namespace SkyWatcher {
         public static Star[] specialStars;
         public static void InitializeLibrary() {
             // Create the array
-            SkyObject[] value = new SkyObject[2000];
+            SkyObject[] value = new SkyObject[3000];
 
             // Initialize stars of Andromeda
             value[1] = new Star("Alpheratz", 11, 29, StarProperties.Double);
