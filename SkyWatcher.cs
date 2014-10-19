@@ -20,7 +20,7 @@ namespace SkyWatcher {
     [ComVisible(true)]
     public class Star : SkyObject {
         public static int readystars;
-        public static int totalstars = 329;
+        public static int totalstars = 451;
         public double RA;
         public double RA2;
         public double Dec;
@@ -697,9 +697,15 @@ namespace SkyWatcher {
             
             // Initialize stars of Corvus
             value[445] = new Star("Alpha Corvi", 735, -25);
-            value[446] = new Star("Beta Corvi", 754, -24);
+            val -23ue[446] = new Star("Beta Corvi", 754, -24);
             value[447] = new Star("Gamma Corvi", 740, -17);
             value[448] = new Star("Delta Corvi", 752, -16, StarProperties.Double);
+            value[449] = new Star("Epsilon Corvi", 735, -23);
+            value[450] = new Star("R Corvi", 741, -19, StarProperties.VariableMagnitude);
+            
+            // Initialize stars of Crater
+            value[452] = new Star("Alpha Crateris", 660, -17);
+            value[453] = new Star("Beta Crateris", 676, -23);
             
             // Initialize constellations (second time)
             value[375] = new Constellation("Cetus", 376, 393, "Ceti");
@@ -709,7 +715,7 @@ namespace SkyWatcher {
             value[425] = new Constellation("Coma Berenices", 426, 428, "Comae Berenices");
             value[429] = new Constellation("Corona Australis", 430, 435, "Corona Australis");
             value[436] = new Constellation("Corona Borealis", 437, 443, "Coronae Borealis");
-            value[444] = new Constellation("Corvus", 445, 448, "Corvi");
+            value[444] = new Constellation("Corvus", 445, 450, "Corvi");
         }
         public static void InitializeLibrary3(SkyObject[] value) {
             // This method is for extra constellations.
