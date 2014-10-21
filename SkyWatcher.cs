@@ -697,7 +697,7 @@ namespace SkyWatcher {
             
             // Initialize stars of Corvus
             value[445] = new Star("Alpha Corvi", 735, -25);
-            val -23ue[446] = new Star("Beta Corvi", 754, -24);
+            value[446] = new Star("Beta Corvi", 754, -24);
             value[447] = new Star("Gamma Corvi", 740, -17);
             value[448] = new Star("Delta Corvi", 752, -16, StarProperties.Double);
             value[449] = new Star("Epsilon Corvi", 735, -23);
