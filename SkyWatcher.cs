@@ -8,7 +8,7 @@ namespace SkyWatcher {
     public class SkyObject {
         public string Name;
         public SkyObject() {
-
+            
         }
         public SkyObject(string name) {
             Name = name;
@@ -20,22 +20,22 @@ namespace SkyWatcher {
     [ComVisible(true)]
     public class Star : SkyObject {
         public static int readystars;
-        public static int totalstars = 261;
+        public static int totalstars = 451;
         public double RA;
         public double RA2;
         public double Dec;
         public StarProperties Properties;
         public bool IsNamed {
             get {
-                return !(Name.Contains(" ")) || !(Name.Contains(GetConstellation().Genitive));
+                return !(Name.Contains(" ")) || !(Name.Contains(GetConstellation().Genitive)) || !(Name.Contains("LuisStar-"));
             }
         }
-        public Star(string name, int ra, int dec) {
+        public Star(string name, double ra, double dec) {
             OnAddedStar(name);
             Name = name;
-            RA = (double)(ra) / (double)(60);
+            RA = ra / 60;
             RA2 = RA - 24;
-            Dec = (double)(dec);
+            Dec = dec;
             CustomColor = Color.FromArgb(70, 255, 255);
         }
         internal static void OnAddedStar(string name) {
@@ -76,18 +76,25 @@ namespace SkyWatcher {
             return months[result];
         }
         public Color CustomColor;
-        public Star(string name, int ra, int dec, Color displayColor) : this(name, ra, dec) {
+        public Star(string name, double ra, double dec, Color displayColor) : this(name, ra, dec) {
             CustomColor = displayColor;
         }
         public override bool Equals(object obj)
         {
             return Name == ((Star)(obj)).Name;
         }
-        public Star(string name, int ra, int dec, StarProperties properties) : this(name, ra, dec) {
+        public Star(string name, double ra, double dec, StarProperties properties) : this(name, ra, dec) {
             Properties = properties;
         }
-        public Star(string name, int ra, int dec, Color displayColor, StarProperties properties) : this(name, ra, dec, displayColor) {
+        public Star(string name, double ra, double dec, Color displayColor, StarProperties properties) : this(name, ra, dec, displayColor) {
             Properties = properties;
+        }
+        public Guid GetUUID() {
+            SkyObjectLibrary.Search(Name);
+            int ra = (int)(Math.Round(RA * 60));
+            int dec1 = (int)(Math.Truncate(Dec));
+            int dec2 = (int)(Math.Truncate(Dec / 24) - Math.Truncate(Dec / 1440));
+            return new Guid(last_index, 0, 24576, 128, 0, (byte)(ra & 255), (byte)(ra / 256), dec1, dec2, 0, 0);
         }
     }
     [Flags]
@@ -136,12 +143,6 @@ namespace SkyWatcher {
     public class Nebula : Star {
         public Nebula(string name, int ra, int dec) : base(name, ra, dec) {
             CustomColor = Color.FromArgb(243, 255, 128, 255);
-            if (name.StartsWith("M", StringComparison.CurrentCulture) && !IsNamed) {
-                Name = "M" + name.Substring(2);
-            }
-            if (name.StartsWith("NGC", StringComparison.CurrentCulture) && !IsNamed) {
-                Name = "NGC" + name.Substring(4);
-            }
         }
     }
     public class Galaxy : Star {
@@ -174,11 +175,11 @@ namespace SkyWatcher {
         }
         public static int last_index;
         public static Star[] specialStars;
-        public static void InitializeLibrary() {
+        public static void InitialiseLibrary() {
             // Create the array
-            SkyObject[] value = new SkyObject[2000];
+            SkyObject[] value = new SkyObject[3000];
 
-            // Initialize stars of Andromeda
+            // Initialise stars of Andromeda
             value[1] = new Star("Alpheratz", 11, 29, StarProperties.Double);
             value[2] = new Star("Beta Andromedae", 71, 35, StarProperties.Double);
             value[3] = new Star("Gamma Andromedae", 126, 42, StarProperties.Double);
@@ -201,7 +202,7 @@ namespace SkyWatcher {
             value[20] = new Star("Tau Andromedae", 101, 41, StarProperties.Double);
             value[21] = new Star("Phi Andromedae", 70, 47, StarProperties.Double);
 
-            // Initialize stars of Antlia
+            // Initialise stars of Antlia
             value[23] = new Star("Alpha Antliae", 631, -31);
             value[24] = new Star("Delta Antliae", 633, -30, StarProperties.Double);
             value[25] = new Star("Epsilon Antliae", 575, -37);
@@ -212,8 +213,8 @@ namespace SkyWatcher {
             value[30] = new Star("Iota Antliae", 655, -37);
             value[31] = new Star("S Antliae", 576, -28, StarProperties.VariableMagnitude);
             value[32] = new Star("U Antliae", 634, -39, StarProperties.VariableMagnitude);
-
-            // Initialize stars of Apus
+            
+            // Initialise stars of Apus
             value[34] = new Star("Alpha Apodis", 886, -79);
             value[35] = new Star("Beta Apodis", 1009, -77);
             value[36] = new Star("Gamma Apodis", 1015, -78);
@@ -225,8 +226,8 @@ namespace SkyWatcher {
             value[42] = new Star("Iota Apodis", 1063, -70);
             value[43] = new Star("Kappa 1 Apodis", 932, -73, StarProperties.Double);
             value[44] = new Star("Kappa 2 Apodis", 936, -73, StarProperties.Double);
-
-            // Initialize stars of Aquarius
+            
+            // Initialise stars of Aquarius
             value[46] = new Star("Alpha Aquarii", 1329, -1);
             value[47] = new Star("Beta Aquarii", 1363, -6, StarProperties.Double);
             value[48] = new Star("Gamma Aquarii", 1343, -2);
@@ -252,8 +253,8 @@ namespace SkyWatcher {
             value[68] = new Star("Psi 3 Aquarii", 1399, -9, StarProperties.Double);
             value[69] = new Star("Omega 1 Aquarii", 1421, -4);
             value[70] = new Star("Omega 2 Aquarii", 1424, -5, StarProperties.Double);
-
-            // Initialize stars of Aquila
+            
+            // Initialise stars of Aquila
             value[72] = new Star("Altair", 1189, 9);
             value[73] = new Star("Beta Aquilae", 1194, 7, StarProperties.Double);
             value[74] = new Star("Gamma Aquilae", 1182, 11);
@@ -278,8 +279,8 @@ namespace SkyWatcher {
             value[93] = new Star("Chi Aquilae", 1179, 12);
             value[94] = new Star("Phi Aquilae", 1193, 12);
             value[95] = new Star("Psi Aquilae", 1176, 13);
-
-            // Initialize stars of Ara
+            
+            // Initialise stars of Ara
             value[97] = new Star("Alpha Arae", 1053, -50);
             value[98] = new Star("Beta Arae", 1051, -55);
             value[99] = new Star("Gamma Arae", 1050, -56, StarProperties.Double);
@@ -297,8 +298,8 @@ namespace SkyWatcher {
             value[111] = new Star("R Arae", 1001, -57);
             value[112] = new Star("Sigma Arae", 1053, -47);
             value[113] = new Star("U Arae", 1071, -51);
-
-            // Initialize stars of Aries
+            
+            // Initialise stars of Aries
             value[115] = new Star("Alpha Arietis", 128, 23);
             value[116] = new Star("Beta Arietis", 113, 21);
             value[117] = new Star("Gamma Arietis", 111, 19, StarProperties.Double);
@@ -319,8 +320,8 @@ namespace SkyWatcher {
             value[132] = new Star("Sigma Arietis", 171, 15);
             value[133] = new Star("Tau Arietis", 199, 21);
             value[134] = new Star("U Arietis", 194, 15);
-
-            // Initialize stars of Auriga
+            
+            // Initialise stars of Auriga
             value[136] = new Star("Capella", 319, 45);
             value[137] = new Star("Beta Aurigae", 360, 45, StarProperties.VariableMagnitude);
             value[138] = new Star("Delta Aurigae", 360, 54);
@@ -342,8 +343,8 @@ namespace SkyWatcher {
             value[154] = new Star("Sigma Aurigae", 325, 37);
             value[155] = new Star("Tau Aurigae", 352, 39, StarProperties.Double);
             value[156] = new Star("UU Aurigae", 394, 38, StarProperties.Double | StarProperties.VariableMagnitude);
-
-            // Initialize stars of Bootes
+            
+            // Initialise stars of Bootes
             value[158] = new Star("Arcturus", 854, 19, ArcturusColor);
             value[159] = new Star("A Bootis", 852, 35);
             value[160] = new Star("Beta Bootis", 901, 40);
@@ -369,23 +370,23 @@ namespace SkyWatcher {
             value[180] = new Star("Phi Bootis", 937, 40);
             value[181] = new Star("Psi Bootis", 904, 27);
             value[182] = new Star("Omega Bootis", 901, 25);
-
-            // Initialize stars of Caelum
+            
+            // Initialise stars of Caelum
             value[184] = new Star("Alpha Caeli", 282, -42);
             value[185] = new Star("Beta Caeli", 283, -37);
             value[186] = new Star("Gamma Caeli", 304, -35);
             value[187] = new Star("Delta Caeli", 270, -45);
             value[188] = new Star("Zeta Caeli", 286, -30);
             value[189] = new Star("R Caeli", 282, -38);
-
-            // Initialize stars of Camelopardalis
+            
+            // Initialise stars of Camelopardalis
             value[191] = new Star("Alpha Camelopardalis", 293, 66);
             value[192] = new Star("Beta Camelopardalis", 300, 60);
             value[193] = new Star("Gamma Camelopardalis", 231, 71);
             value[194] = new Star("VZ Camelopardalis", 447, 83, StarProperties.Double | StarProperties.VariableMagnitude);
             value[195] = new Star("Z Camelopardalis", 511, 74, StarProperties.VariableMagnitude);
-
-            // Initialize stars of Cancer
+            
+            // Initialise stars of Cancer
             value[197] = new Star("Alpha Cancri", 539, 12);
             value[198] = new Star("Beta Cancri", 499, 9);
             value[199] = new Star("Gamma Cancri", 521, 22);
@@ -413,15 +414,15 @@ namespace SkyWatcher {
             value[221] = new Star("Phi 2 Cancri", 508, 27, StarProperties.Double);
             value[222] = new Star("Psi Cancri", 495, 26);
             value[223] = new Star("Omega Cancri", 480, 26);
-
-            // Initialize stars of Canes Venatici
+            
+            // Initialise stars of Canes Venatici
             value[225] = new Star("Cor Caroli", 778, 38, StarProperties.Double);
             value[226] = new Star("Beta Canum Venaticorum", 751, 42);
             value[227] = new Star("R Canum Venaticorum", 821, 40, StarProperties.VariableMagnitude);
             value[228] = new Star("TU Canum Venaticorum", 714, 47, StarProperties.VariableMagnitude);
             value[229] = new Star("Y Canum Venaticorum", 697, 46, StarProperties.VariableMagnitude);
-
-            // Initialize stars of Canis Major
+            
+            // Initialise stars of Canis Major
             value[231] = new Star("Sirius", 398, -17, StarProperties.Double);
             value[232] = new Star("Beta Canis Majoris", 383, -18);
             value[233] = new Star("Gamma Canis Majoris", 427, -16);
@@ -444,7 +445,7 @@ namespace SkyWatcher {
             value[250] = new Star("Tau Canis Majoris", 441, -25, StarProperties.Double);
             value[251] = new Star("Omega Canis Majoris", 399, -27);
             
-            // Initialize stars of Canis Minor
+            // Initialise stars of Canis Minor
             value[253] = new Star("Procyon", 456, 5, ProcyonColor, StarProperties.Double);
             value[254] = new Star("Beta Canis Minoris", 445, 8);
             value[255] = new Star("Gamma Canis Minoris", 446, 9, StarProperties.Double);
@@ -454,15 +455,126 @@ namespace SkyWatcher {
             value[259] = new Star("Epsilon Canis Minoris", 444, 9);
             value[260] = new Star("Zeta Canis Minoris", 467, 2);
             
-            // Initialize stars of Capricornius
+            // Initialise stars of Capricornus
             value[262] = new Star("Alpha 1 Capricorni", 1217, -13, StarProperties.Double);
-            value[263] = new Star("Alpha 2 Capricorni", 1219, -13);
+            value[263] = new Star("Alpha 2 Capricorni", 1219, -13, StarProperties.Double);
             value[264] = new Star("Beta Capricorni", 1224, -15);
             value[265] = new Star("Gamma Capricorni", 1301, -16);
             value[266] = new Star("Delta Capricorni", 1306, -14);
-            value[267] = new Star("Epsilon Capricorni", 
+            value[267] = new Star("Epsilon Capricorni", 1299, -20, StarProperties.Double | StarProperties.VariableMagnitude);
+            value[268] = new Star("Zeta Capricorni", 1289, -23);
+            value[269] = new Star("Eta Capricorni", 1267, -20);
+            value[270] = new Star("Theta Capricorni", 1269, -17);
+            value[271] = new Star("Iota Capricorni", 1284, -17);
+            value[272] = new Star("Kappa Capricorni", 1302, -19);
+            value[273] = new Star("Lambda Capricorni", 1301, -18);
+            value[274] = new Star("Mu Capricorni", 1312, -14);
+            value[275] = new Star("Nu Capricorni", 1220, -13, StarProperties.Double);
+            value[276] = new Star("Csi Capricorni", 1212, -13, StarProperties.Double);
+            value[277] = new Star("Omicron Capricorni", -18, StarProperties.Double);
+            value[278] = new Star("Pi Capricorni", 1245, -18, StarProperties.Double);
+            value[279] = new Star("Rho Capricorni", 1246, -18, StarProperties.Double);
+            value[280] = new Star("RT Capricorni", 1219, -22, StarProperties.VariableMagnitude);
+            value[281] = new Star("Sigma Capricorni", 1219, -18, StarProperties.Double);
+            value[282] = new Star("Tau Capricorni", 1235, -15, StarProperties.Double);
+            value[283] = new Star("Chi Capricorni", 1272, -21, StarProperties.Double);
+            value[284] = new Star("Phi Capricorni", 1276, -20);
+            value[285] = new Star("Psi Capricorni", 1241, -27);
+            value[286] = new Star("Omega Capricorni", 1245, -28);
             
-            // Initialize constellations
+            // Initialise stars of Carina
+            value[288] = new Star("Canopus", 392, -53);
+            value[289] = new Star("A Carinae", 410, -54);
+            value[290] = new Star("LuisStar-0290", 553, -59, StarProperties.Double);
+            value[291] = new Star("Beta Carinae", 559, -70);
+            value[292] = new Star("LuisStar-0292", 538, -61);
+            value[293] = new Star("LuisStar-0293", 529, -60, StarProperties.VariableMagnitude);
+            value[294] = new Star("Epsilon Carinae", 511, -59);
+            value[295] = new Star("LuisStar-0295", 529, -56);
+            value[296] = new Star("Eta Carinae", 650, -60, StarProperties.VariableMagnitude);
+            value[297] = new Star("LuisStar-0297", 560, -57);
+            value[298] = new Star("LuisStar-0298", 566, -59);
+            value[299] = new Star("Theta Carinae", 652, -64);
+            value[300] = new Star("G Carinae", 550, -73);
+            value[301] = new Star("Chi Carinae", 473, -53);
+            value[302] = new Star("Omega Carinae", 621, -70);
+            
+            // Initialise stars of Cassiopeia
+            value[304] = new Star("Alpha Cassiopeiae", 41, 56, StarProperties.Double);
+            value[305] = new Star("Beta Cassiopeiae", 14, 59, StarProperties.Double);
+            value[306] = new Star("Gamma Cassiopeiae", 60, 61, StarProperties.Double | StarProperties.VariableMagnitude);
+            value[307] = new Star("Delta Cassiopeiae", 83, 60, StarProperties.VariableMagnitude);
+            value[308] = new Star("Epsilon Cassiopeiae", 109, 64);
+            value[309] = new Star("Zeta Cassiopeiae", 41, 54);
+            value[310] = new Star("Eta Cassiopeiae", 51, 57, StarProperties.Double);
+            value[311] = new Star("Theta Cassiopeiae", 80, 55);
+            value[312] = new Star("Iota Cassiopeiae", 155, 68, StarProperties.Double);
+            value[313] = new Star("Kappa Cassiopeiae", 39, 63);
+            value[314] = new Star("Lambda Cassiopeiae", 36, 54, StarProperties.Double);
+            value[315] = new Star("Mu Cassiopeiae", 73, 55);
+            value[316] = new Star("Nu Cassiopeiae", 52, 51);
+            value[317] = new Star("Csi Cassiopeiae", 49, 50);
+            value[318] = new Star("Omicron Cassiopeiae", 48, 48, StarProperties.Double);
+            value[319] = new Star("Pi Cassiopeiae", 48, 47);
+            value[320] = new Star("Rho Cassiopeiae", 1434, 57, StarProperties.VariableMagnitude);
+            value[321] = new Star("R Cassiopeiae", 1437, 51, StarProperties.VariableMagnitude);
+            value[322] = new Star("RZ Cassiopeiae", 168, 70, StarProperties.VariableMagnitude);
+            value[323] = new Star("Sigma Cassiopeiae", 0, 56);
+            value[324] = new Star("Tau Cassiopeiae", 1416, 58);
+            value[325] = new Star("Chi Cassiopeiae", 90, 59);
+            value[326] = new Star("Phi Cassiopeiae", 84, 58, StarProperties.Double);
+            value[327] = new Star("Psi Cassiopeiae", 79, 68, StarProperties.Double);
+            value[328] = new Star("Omega Cassiopeiae", 117, 59);
+            
+            // Initialise stars of Centaurus
+            value[330] = new Star("Rigel Kentaurus", 881, -60, StarProperties.Double);
+            value[331] = new Star("Hadar", 841, -61, StarProperties.Double);
+            value[332] = new Star("Gamma Centauri", 767, -49, StarProperties.Double);
+            value[333] = new Star("Delta Centauri", 728, -51);
+            value[334] = new Star("Epsilon Centauri", 816, -54, StarProperties.Double);
+            value[335] = new Star("Zeta Centauri", 832, -47);
+            value[336] = new Star("Eta Centauri", 851, -43, StarProperties.Double);
+            value[337] = new Star("Theta Centauri", 848, -36);
+            value[338] = new Star("Iota Centauri", 805, -37, StarProperties.Double);
+            value[339] = new Star("Kappa Centauri", 900, -42, StarProperties.Double);
+            value[340] = new Star("Lambda Centauri", 695, -64);
+            value[341] = new Star("Mu Centauri", 823, -42, StarProperties.VariableMagnitude);
+            value[342] = new Star("Nu Centauri", 823, -41);
+            value[343] = new Star("Csi Centauri", 784, -50, StarProperties.Double);
+            value[344] = new Star("Omicron Centauri", 690, -60, StarProperties.Double);
+            value[345] = new Star("Pi Centauri", 687, -54, StarProperties.Double);
+            value[346] = new Star("Rho Centauri", 735, -52);
+            value[347] = new Star("R Centauri", 859, -60, StarProperties.VariableMagnitude);
+            value[348] = new Star("Sigma Centauri", 749, -50);
+            value[349] = new Star("S Centauri", 747, -49, StarProperties.VariableMagnitude);
+            value[350] = new Star("Tau Centauri", 733, -48);
+            value[351] = new Star("T Centauri", 814, -34, StarProperties.VariableMagnitude);
+            value[352] = new Star("V Centauri", 872, -57, StarProperties.VariableMagnitude);
+            value[353] = new Star("Psi Centauri", 861, -38);
+            
+            // Initialise stars of Cepheus
+            value[355] = new Star("Alpha Cephei", 1246, 63);
+            value[356] = new Star("Beta Cephei", 1281, 71, StarProperties.Double | StarProperties.VariableMagnitude);
+            value[357] = new Star("Gamma Cephei", 1419, 77);
+            value[358] = new Star("Delta Cephei", 1359, 58, StarProperties.VariableMagnitude);
+            value[359] = new Star("Epsilon Cephei", 1341, 57);
+            value[360] = new Star("Zeta Cephei", 1328, 58);
+            value[361] = new Star("Eta Cephei", 1250, 62, StarProperties.Double);
+            value[362] = new Star("Theta Cephei", 1238, 63);
+            value[363] = new Star("Iota Cephei", 1375, 66);
+            value[364] = new Star("Kappa Cephei", 1209, 77, StarProperties.Double);
+            value[365] = new Star("Lambda Cephei", 1326, 60);
+            value[366] = new Star("Mu Cephei", 1295, 58, StarProperties.VariableMagnitude);
+            value[367] = new Star("Nu Cephei", 1298, 62);
+            value[368] = new Star("Csi Cephei", 1321, 65, StarProperties.Double);
+            value[369] = new Star("Omicron Cephei", 1389, 68, StarProperties.Double);
+            value[370] = new Star("Pi Cephei", 1379, 76, StarProperties.Double);
+            value[371] = new Star("Rho Cephei", 1361, 78);
+            value[372] = new Star("RW Cephei", 1351, 56, StarProperties.VariableMagnitude);
+            value[373] = new Star("T Cephei", 1273, 68, StarProperties.VariableMagnitude);
+            value[374] = new Star("VV Cephei", 1314, 64, StarProperties.VariableMagnitude);
+            
+            // Initialise constellations
             value[0] = new Constellation("Andromeda", 1, 21, "Andromedae");
             value[22] = new Constellation("Antlia", 23, 32, "Antliae");
             value[33] = new Constellation("Apus", 34, 44, "Apodis");
@@ -478,47 +590,166 @@ namespace SkyWatcher {
             value[224] = new Constellation("Canes Venatici", 225, 229, "Canum Venaticorum");
             value[230] = new Constellation("Canis Major", 231, 251, "Canis Majoris");
             value[252] = new Constellation("Canis Minor", 253, 260, "Canis Minoris");
-
-            // If you have new SkyObjects, insert them in this method or in the following methods.
+            value[261] = new Constellation("Capricornus", 262, 286, "Capricorni");
+            value[287] = new Constellation("Carina", 288, 302, "Carinae");
+            value[303] = new Constellation("Cassiopeia", 304, 328, "Cassiopeiae");
+            value[329] = new Constellation("Centaurus", 330, 353, "Centauri");
+            value[354] = new Constellation("Cepheus", 355, 374, "Cephei");
+            
+            // If you have new SkyObjects, insert them in InitialiseLibrary6 or in the following methods.
             // Examples:
             // M 13: insert it between the comment 'Hercules' and the next empty line
-            // I already don't know the value of the index, ra and dec variables in the code below.
-            // value[index] = new GroupAsStar("M 13", ra, dec);
+            // I already don't know the value of the ra and dec variables in the code below.
+            // value[2013] = new GroupAsStar("M 13", ra, dec);
             // Psi 1 to 9 Aurigae: I've missed these stars.
-            // Insert after UU Aurigae this code (example and with ra and dec values unknown):
-            // value[157] = new Star("Psi 1 Aurigae", ra, dec);
+            // Insert in InitialiseLibrary7 (example and with ra and dec values unknown):
+            // value[2120] = new Star("Psi 1 Aurigae", ra, dec);
             // This project is available on SourceForge at:
             // http://sourceforge.net/projects/skywatcher
-            // I have an issue (#3). Do a pull request in https://github.com/luis140219/skywatcher
-            // before the 30st of September.
-
+            // I have an issue (#3). Do a pull request in https://github.com/luismark/skywatcher
+            // before the 12nd of October.
+            
             // Calls to the following methods
-            InitializeLibrary2(value);
-            InitializeLibrary3(value);
-            InitializeLibrary4(value);
-            InitializeLibrary5(value);
-            InitializeLibrary6(value);
-
+            InitialiseLibrary2(value);
+            InitialiseLibrary3(value);
+            InitialiseLibrary4(value);
+            InitialiseLibrary5(value);
+            InitialiseLibrary6(value);
+            
             Value = value;
         }
-        public static void InitializeLibrary2(SkyObject[] value) {
+        public static void InitialiseLibrary2(SkyObject[] value) {
+            // Initialise stars of Cetus
+            value[376] = new Star("Alpha Ceti", 183, 4);
+            value[377] = new Star("Beta Ceti", 42, -18);
+            value[378] = new Star("Gamma Ceti", 161, 3, StarProperties.Double);
+            value[379] = new Star("Delta Ceti", 156, 0);
+            value[380] = new Star("Epsilon Ceti", 159, -12);
+            value[381] = new Star("Zeta Ceti", 112, -10);
+            value[382] = new Star("Eta Ceti", 71, -10);
+            value[383] = new Star("Theta Ceti", 85, -8);
+            value[384] = new Star("Iota Ceti", 20, -9);
+            value[385] = new Star("Kappa Ceti", 201, 3);
+            value[386] = new Star("Lambda Ceti", 180, 9);
+            value[387] = new Star("Mu Ceti", 163, 10);
+            value[388] = new Star("Nu Ceti", 153, 6, StarProperties.Double);
+            value[389] = new Star("Csi Ceti", 145, 8, StarProperties.Double);
+            value[389] = new Star("Mira", 141, -3, StarProperties.VariableMagnitude);
+            value[390] = new Star("Pi Ceti", 161, 6);
+            value[391] = new Star("Rho Ceti", 143, -12);
+            value[392] = new Star("Sigma Ceti", 153, -15);
+            value[393] = new Star("Tau Ceti", 101, -17);
+            
+            // Initialise stars of Chamaeleon
+            value[395] = new Star("Alpha Chamaeleontis", 509, -77);
+            value[396] = new Star("Beta Chamaeleontis", 751, -79);
+            value[397] = new Star("Gamma Chamaeleontis", 640, -78);
+            value[398] = new Star("Delta Chamaeleontis", 651, -81, StarProperties.Double);
+            value[399] = new Star("Epsilon Chamaeleontis", 720, -78, StarProperties.Double);
+            value[400] = new Star("Zeta Chamaeleontis", 569, -81);
+            value[401] = new Star("Eta Chamaeleontis", 522, -79);
+            value[402] = new Star("Theta Chamaeleontis", 509, -78, StarProperties.Double);
+            value[403] = new Star("RS Chamaeleontis", 528, -79, StarProperties.VariableMagnitude);
+            value[404] = new Star("Z Chamaeleontis", 490, -77, StarProperties.VariableMagnitude);
+            
+            // Initialise stars of Circinus
+            value[406] = new Star("Alpha Circini", 891, -66, StarProperties.Double);
+            value[407] = new Star("Beta Circini", 909, -59);
+            value[408] = new Star("Gamma Circini", 913, -59, StarProperties.Double);
+            value[409] = new Star("Delta Circini", 913, -62);
+            value[410] = new Star("Epsilon Circini", 906, -64);
+            value[411] = new Star("Zeta Circini", 896, -66);
+            value[412] = new Star("Eta Circini", 899, -64);
+            value[413] = new Star("Theta Circini", 894, -63, StarProperties.Double);
+            
+            // Initialise stars of Columba
+            value[415] = new Star("Alpha Columbae", 326, -34, StarProperties.Double);
+            value[416] = new Star("Beta Columbae", 344, -36);
+            value[417] = new Star("Gamma Columbae", 358, -36);
+            value[418] = new Star("Delta Columbae", 385, -34);
+            value[419] = new Star("Epsilon Columbae", 327, -36);
+            value[420] = new Star("Eta Columbae", 358, -43);
+            value[421] = new Star("Theta Columbae", 371, -37);
+            value[422] = new Star("Kappa Columbae", 382, -36);
+            value[423] = new Star("SX Columbae", 392, -36, StarProperties.Double);
+            value[424] = new Star("T Columbae", 319, -34, StarProperties.VariableMagnitude);
+            
+            // Initialise stars of Coma Berenices
+            value[426] = new Star("Alpha Comae Berenices", 795, 17, StarProperties.Double);
+            value[427] = new Star("Beta Comae Berenices", 796, 27);
+            value[428] = new Star("Gamma Comae Berenices", 748, 28);
+            
+            // Initialise stars of Corona Australis
+            value[430] = new Star("Alpha Coronae Australis", 1158, -37);
+            value[431] = new Star("Beta Coronae Australis", 1158, -39);
+            value[432] = new Star("Gamma Coronae Australis", 1155, -37);
+            value[433] = new Star("Delta Coronae Australis", 1154, -41);
+            value[434] = new Star("Epsilon Coronae Australis", 1139, -37, StarProperties.VariableMagnitude);
+            value[435] = new Star("Zeta Coronae Australis", 1141, -43);
+            
+            // Initialise stars of Corona Borealis
+            value[437] = new Star("Alpha Coronae Borealis", 933, 26, StarProperties.VariableMagnitude);
+            value[438] = new Star("Beta Coronae Borealis", 928, 29);
+            value[439] = new Star("Gamma Coronae Borealis", 940, 26, StarProperties.Double);
+            value[440] = new Star("Delta Coronae Borealis", 944, 26);
+            value[441] = new Star("Epsilon Coronae Borealis", 958, 26, StarProperties.Double);
+            value[442] = new Star("Theta Coronae Borealis", 931, 32);
+            value[443] = new Star("R Coronae Borealis", 940, 27, StarProperties.VariableMagnitude);
+            
+            // Initialise stars of Corvus
+            value[445] = new Star("Alpha Corvi", 735, -25);
+            value[446] = new Star("Beta Corvi", 754, -24);
+            value[447] = new Star("Gamma Corvi", 740, -17);
+            value[448] = new Star("Delta Corvi", 752, -16, StarProperties.Double);
+            value[449] = new Star("Epsilon Corvi", 735, -23);
+            value[450] = new Star("R Corvi", 741, -19, StarProperties.VariableMagnitude);
+            
+            // Initialise stars of Crater
+            value[452] = new Star("Alpha Crateris", 660, -17);
+            value[453] = new Star("Beta Crateris", 676, -23);
+            value[454] = new Star("Gamma Crateris", 688, -18, StarProperties.Double);
+            value[455] = new Star("Delta Crateris", 680, -15);
+            value[456] = new Star("Epsilon Crateris", 688, -11);
+            value[457] = new Star("Zeta Crateris", 702, -18);
+            value[458] = new Star("Eta Crateris", 713, -17);
+            value[459] = new Star("Theta Crateris", 695, -10);
+            value[460] = new Star("Iota Crateris", 696, -14, StarProperties.Double);
+            value[461] = new Star("Kappa Crateris", 690, -13);
+            
+            // Initialise stars of Crux
+            value[463] = new Star("Acrux", 755, -64, StarProperties.Double);
+            value[464] = new Star("Mimosa", 771, -60, StarProperties.Double);
+            value[465] = new Star("Gacrux", 757, -56, StarProperties.Double);
+            value[466] = new Star("Delta Crucis", 731, -59);
+            value[467] = new Star("Epsilon Crucis", 747, -60);
+            value[468] = new Star("Zeta Crucis", 749, -65);
+            
+            // Initialise constellations (second time)
+            value[375] = new Constellation("Cetus", 376, 393, "Ceti");
+            value[394] = new Constellation("Chamaeleon", 395, 404, "Chamaeleontis");
+            value[405] = new Constellation("Circinus", 406, 413, "Circini");
+            value[414] = new Constellation("Columba", 415, 424, "Columbae");
+            value[425] = new Constellation("Coma Berenices", 426, 428, "Comae Berenices");
+            value[429] = new Constellation("Corona Australis", 430, 435, "Coronae Australis");
+            value[436] = new Constellation("Corona Borealis", 437, 443, "Coronae Borealis");
+            value[444] = new Constellation("Corvus", 445, 450, "Corvi");
+            value[451] = new Constellation("Crater", 452, 461, "Crater");
+            value[462] = new Constellation("Crux", 463, 468, "Crucis");
+        }
+        public static void InitialiseLibrary3(SkyObject[] value) {
             // This method is for extra constellations.
             // For technical reasons, a method only supports 20 constellations at once.
         }
-        public static void InitializeLibrary3(SkyObject[] value) {
+        public static void InitialiseLibrary4(SkyObject[] value) {
             // This method is for extra constellations.
             // For technical reasons, a method only supports 20 constellations at once.
         }
-        public static void InitializeLibrary4(SkyObject[] value) {
+        public static void InitialiseLibrary5(SkyObject[] value) {
             // This method is for extra constellations.
             // For technical reasons, a method only supports 20 constellations at once.
         }
-        public static void InitializeLibrary5(SkyObject[] value) {
-            // This method is for extra constellations.
-            // For technical reasons, a method only supports 20 constellations at once.
-        }
-        public static void InitializeLibrary6(SkyObject[] value) {
-            // This method is for initializing Messier objects.
+        public static void InitialiseLibrary6(SkyObject[] value) {
+            // This method is for initialising Messier objects.
             // For technical reasons, a method only supports 20 constellations at once.
         }
         public static Constellation Andromeda {
@@ -611,6 +842,30 @@ namespace SkyWatcher {
             }
         }
         public static int CanisMinorLocation = 252;
+        public static Constellation Capricornus {
+            get {
+                return (Constellation)(Value[CapricornusLocation]);
+            }
+        }
+        public static int CapricornusLocation = 261;
+        public static Constellation Carina {
+            get {
+                return (Constellation)(Value[CarinaLocation]);
+            }
+        }
+        public static int CarinaLocation = 287;
+        public static Constellation Cassiopeia {
+            get {
+                return (Constellation)(Value[CassiopeiaLocation]);
+            }
+        }
+        public static int CassiopeiaLocation = 303;
+        public static Constellation Centaurus {
+            get {
+                return (Constellation)(Value[CentaurusLocation]);
+            }
+        }
+        public static int CentaurusLocation = 329;
         public static Color ArcturusColor = Color.FromArgb(255, 226, 0);
         public static Color ProcyonColor = Color.FromArgb(255, 226, 0);
     }
