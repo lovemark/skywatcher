@@ -40,7 +40,7 @@ namespace SkyWatcher
             //
             SkyPositionX = (int)(x);
             SkyPositionY = (int)(y);
-            InitializeDataGridView();
+            InitialiseDataGridView();
 
             // Remove remainders for correct positioning
             double xrem = Math.IEEERemainder(SkyPositionX, 60);
@@ -67,7 +67,7 @@ namespace SkyWatcher
             int y = (int)(result.Dec);
             SkyPositionX = (int)(x);
             SkyPositionY = (int)(y);
-            InitializeDataGridView();
+            InitialiseDataGridView();
 
             // Remove remainders for correct positioning
             double xrem = Math.IEEERemainder(SkyPositionX, 60);
@@ -87,7 +87,7 @@ namespace SkyWatcher
             label5.Text = (SkyPositionY - 20) + degreeChar;
             OpenSettingsForm();
         }
-        public void InitializeDataGridView() {
+        public void InitialiseDataGridView() {
             dataGridView1.RowCount = 3;
         }
         void DataGridView1CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -182,7 +182,7 @@ namespace SkyWatcher
             label3.Text = SkyPositionY + degreeChar;
             label4.Text = (SkyPositionY - 10) + degreeChar;
             label5.Text = (SkyPositionY - 20) + degreeChar;
-            InitializeDataGridView();
+            InitialiseDataGridView();
             MakeStars();
         }
         void StarClicked(object sender, EventArgs e) {
@@ -226,7 +226,7 @@ namespace SkyWatcher
             label3.Text = SkyPositionY + degreeChar;
             label4.Text = (SkyPositionY - 10) + degreeChar;
             label5.Text = (SkyPositionY - 20) + degreeChar;
-            InitializeDataGridView();
+            InitialiseDataGridView();
             MakeStars();
         }
         public void OpenSettingsForm() {
