@@ -717,7 +717,12 @@ namespace SkyWatcher {
             value[461] = new Star("Kappa Crateris", 690, -13);
             
             // Initialise stars of Crux
-            value[463] =
+            value[463] = new Star("Acrux", 755, -64, StarProperties.Double);
+            value[464] = new Star("Mimosa", 771, -60, StarProperties.Double);
+            value[465] = new Star("Gacrux", 757, -56, StarProperties.Double);
+            value[466] = new Star("Delta Crucis", 731, -59);
+            value[467] = new Star("Epsilon Crucis", 747, -60);
+            value[468] = new Star("Zeta Crucis", 749, -65);
             
             // Initialise constellations (second time)
             value[375] = new Constellation("Cetus", 376, 393, "Ceti");
@@ -728,6 +733,8 @@ namespace SkyWatcher {
             value[429] = new Constellation("Corona Australis", 430, 435, "Coronae Australis");
             value[436] = new Constellation("Corona Borealis", 437, 443, "Coronae Borealis");
             value[444] = new Constellation("Corvus", 445, 450, "Corvi");
+            value[451] = new Constellation("Crater", 452, 461, "Crater");
+            value[462] = new Constellation("Crux", 463, 468, "Crucis");
         }
         public static void InitialiseLibrary3(SkyObject[] value) {
             // This method is for extra constellations.
