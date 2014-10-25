@@ -112,7 +112,7 @@ namespace SkyWatcher
                         location.Y -= 2;
                         Control controlToAdd = new Control(this, String.Empty);
                         controlToAdd.Location = location;
-                        controlToAdd.BackColor = currentStar.CustomColor;
+                        controlToAdd.BackColor = currentStar.CustomColour;
                         controlToAdd.Size = new Size(5, 5);
                         controlToAdd.Click += StarClicked;
                         controlToAdd.Name = currentStar.Name;
