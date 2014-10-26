@@ -25,6 +25,7 @@ namespace SkyWatcher {
         public double RA2;
         public double Dec;
         public StarProperties Properties;
+        public double Magnitude = 4;
         public bool IsNamed {
             get {
                 return !(Name.Contains(" ")) || !(Name.Contains(GetConstellation().Genitive)) || !(Name.Contains("LuisStar-"));
@@ -174,11 +175,10 @@ namespace SkyWatcher {
             return new SkyObject("Invalid search");
         }
         public static int last_index;
-        public static Star[] specialStars;
         public static void InitialiseLibrary() {
             // Create the array
             SkyObject[] value = new SkyObject[3000];
-
+            
             // Initialise stars of Andromeda
             value[1] = new Star("Alpheratz", 11, 29, StarProperties.Double);
             value[2] = new Star("Beta Andromedae", 71, 35, StarProperties.Double);
@@ -201,7 +201,7 @@ namespace SkyWatcher {
             value[19] = new Star("Sigma Andromedae", 23, 37);
             value[20] = new Star("Tau Andromedae", 101, 41, StarProperties.Double);
             value[21] = new Star("Phi Andromedae", 70, 47, StarProperties.Double);
-
+            
             // Initialise stars of Antlia
             value[23] = new Star("Alpha Antliae", 631, -31);
             value[24] = new Star("Delta Antliae", 633, -30, StarProperties.Double);
@@ -729,7 +729,7 @@ namespace SkyWatcher {
             // Initialise stars of Cygnus
             value[472] = new Star("Deneb", 1240, 45);
             value[473] = new Star("Albireo", 1168, 27, AlbireoColour, StarProperties.Double);
-            value[474] = new Star("Gamma Cygni", 1226, 40, StarProperties.Double);
+            value[474] = new Star("Sadr", 1226, 40, StarProperties.Double);
             value[475] = new Star("Delta Cygni", 1182, 45, StarProperties.Double);
             value[476] = new Star("Epsilon Cygni", 1241, 33, StarProperties.Double);
             value[477] = new Group("Northern Cross", new int[5]{472, 473, 474, 475, 476});
@@ -738,6 +738,11 @@ namespace SkyWatcher {
             value[480] = new Star("Theta Cygni", 1177, 50);
             value[481] = new Star("Iota Cygni", 1168, 51);
             value[482] = new Star("Kappa Cygni", 1160, 54);
+            value[483] = new Star("Lambda Cygni", 1161, 36, StarProperties.Double);
+            value[484] = new Star("Mu Cygni", 1302, 29, StarProperties.Double);
+            value[485] = new Star("Nu Cygni", 1258, 41);
+            value[486] = new Star("Omicron 1 Cygni", 1220, 46);
+            value[487] = new Star("Omicron 2 Cygni", 1221, 48);
             
             // Initialise constellations (second time)
             value[375] = new Constellation("Cetus", 376, 393, "Ceti");
@@ -764,8 +769,21 @@ namespace SkyWatcher {
             // For technical reasons, a method only supports 20 constellations at once.
         }
         public static void InitialiseLibrary6(SkyObject[] value) {
-            // This method is for initialising Messier objects.
+            // This method is for initialising Messier objects and magnitudes.
             // For technical reasons, a method only supports 20 constellations at once.
+            value[231].Magnitude = -1.46;
+            value[288].Magnitude = -0.72;
+            value[331].Magnitude = -0.01;
+            value[158].Magnitude = -0.04;
+            value[136].Magnitude = 0.08;
+            value[253].Magnitude = 0.8;
+            value[332].Magnitude = 0.66;
+            value[72].Magnitude = 0.77;
+            value[463].Magnitude = 0.87;
+            value[472].Magnitude = 1.25;
+            value[464].Magnitude = 1.28;
+            value[235].Magnitude = 1.50;
+            value[234].Magnitude = 2.12;
         }
         public static Constellation Andromeda {
             get {
