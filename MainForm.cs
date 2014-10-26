@@ -118,9 +118,6 @@ namespace SkyWatcher
                         controlToAdd.Name = currentStar.Name;
                         controlToAdd.TabIndex = Controls.Count;
                         if (currentStar.IsNamed) {
-                            controlToAdd.Location.Offset(-1, -1);
-                            controlToAdd.Size = Size.Add(controlToAdd.Size, new Size(2, 2));
-                            controlToAdd.TabIndex++;
                             Label nameLabel = new Label();
                             nameLabel.Location = controlToAdd.Location;
                             nameLabel.Location.Offset(4, 4);
@@ -130,8 +127,13 @@ namespace SkyWatcher
                             nameLabel.Text = currentStar.Name;
                             nameLabel.TabIndex = Controls.Count;
                             AddedStars++;
+                            controlToAdd.TabIndex++;
                             Controls.Add(nameLabel);
                             Controls[Controls.Count - 1].BringToFront();
+                        }
+                        if (currentStar.Magnitude < 3) {
+                            controlToAdd.Location.Offset(-1, -1);
+                            controlToAdd.Size = Size.Add(controlToAdd.Size, new Size(2, 2));
                         }
                         Controls.Add(controlToAdd);
                         int index = Controls.Count - 1;
@@ -200,6 +202,7 @@ namespace SkyWatcher
             switch (target.Properties) {
                 case StarProperties.Double: properties = nl + "This star is a binary system."; break;
                 case StarProperties.VariableMagnitude: properties = nl + "This star has variable magnitude."; break;
+                case StarProperties.Double | StarProperties.VariableMagnitude: properties = nl + "This is a binary system where each of the members periodically eclipses the other.";
             }
             label.Text = target + "Constellation: " + target.GetConstellation() + nl + "Best month to see (considering observation at midnight): " + target.GetBestMonth() + properties;
             label.Font = new Font("Segoe UI", 18);
@@ -284,7 +287,7 @@ namespace SkyWatcher
             }
             return return_value;
         }
-
+        
         public void Add(IComponent component)
         {
             if (!(component is Control)) {
