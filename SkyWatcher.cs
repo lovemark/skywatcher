@@ -25,6 +25,7 @@ namespace SkyWatcher {
         public double RA2;
         public double Dec;
         public StarProperties Properties;
+        public double Magnitude = 4;
         public bool IsNamed {
             get {
                 return !(Name.Contains(" ")) || !(Name.Contains(GetConstellation().Genitive)) || !(Name.Contains("LuisStar-"));
@@ -36,7 +37,7 @@ namespace SkyWatcher {
             RA = ra / 60;
             RA2 = RA - 24;
             Dec = dec;
-            CustomColor = Color.FromArgb(70, 255, 255);
+            CustomColour = Color.FromArgb(70, 255, 255);
         }
         internal static void OnAddedStar(string name) {
             readystars++;
@@ -75,9 +76,9 @@ namespace SkyWatcher {
             int result = (int)(Math.Truncate(temp));
             return months[result];
         }
-        public Color CustomColor;
-        public Star(string name, double ra, double dec, Color displayColor) : this(name, ra, dec) {
-            CustomColor = displayColor;
+        public Color CustomColour;
+        public Star(string name, double ra, double dec, Color displayColour) : this(name, ra, dec) {
+            CustomColour = displayColour;
         }
         public override bool Equals(object obj)
         {
@@ -86,7 +87,7 @@ namespace SkyWatcher {
         public Star(string name, double ra, double dec, StarProperties properties) : this(name, ra, dec) {
             Properties = properties;
         }
-        public Star(string name, double ra, double dec, Color displayColor, StarProperties properties) : this(name, ra, dec, displayColor) {
+        public Star(string name, double ra, double dec, Color displayColour, StarProperties properties) : this(name, ra, dec, displayColour) {
             Properties = properties;
         }
         public Guid GetUUID() {
@@ -142,12 +143,12 @@ namespace SkyWatcher {
     }
     public class Nebula : Star {
         public Nebula(string name, int ra, int dec) : base(name, ra, dec) {
-            CustomColor = Color.FromArgb(243, 255, 128, 255);
+            CustomColour = Color.FromArgb(243, 255, 128, 255);
         }
     }
     public class Galaxy : Star {
         public Galaxy(string name, int ra, int dec) : base(name, ra, dec) {
-            CustomColor = Color.FromArgb(236, Color.Teal);
+            CustomColour = Color.FromArgb(236, Color.Teal);
         }
     }
     public static class SkyObjectLibrary {
@@ -174,11 +175,10 @@ namespace SkyWatcher {
             return new SkyObject("Invalid search");
         }
         public static int last_index;
-        public static Star[] specialStars;
         public static void InitialiseLibrary() {
             // Create the array
             SkyObject[] value = new SkyObject[3000];
-
+            
             // Initialise stars of Andromeda
             value[1] = new Star("Alpheratz", 11, 29, StarProperties.Double);
             value[2] = new Star("Beta Andromedae", 71, 35, StarProperties.Double);
@@ -201,7 +201,7 @@ namespace SkyWatcher {
             value[19] = new Star("Sigma Andromedae", 23, 37);
             value[20] = new Star("Tau Andromedae", 101, 41, StarProperties.Double);
             value[21] = new Star("Phi Andromedae", 70, 47, StarProperties.Double);
-
+            
             // Initialise stars of Antlia
             value[23] = new Star("Alpha Antliae", 631, -31);
             value[24] = new Star("Delta Antliae", 633, -30, StarProperties.Double);
@@ -345,7 +345,7 @@ namespace SkyWatcher {
             value[156] = new Star("UU Aurigae", 394, 38, StarProperties.Double | StarProperties.VariableMagnitude);
             
             // Initialise stars of Bootes
-            value[158] = new Star("Arcturus", 854, 19, ArcturusColor);
+            value[158] = new Star("Arcturus", 854, 19, ArcturusColour);
             value[159] = new Star("A Bootis", 852, 35);
             value[160] = new Star("Beta Bootis", 901, 40);
             value[161] = new Star("Gamma Bootis", 869, 38, StarProperties.Double);
@@ -446,7 +446,7 @@ namespace SkyWatcher {
             value[251] = new Star("Omega Canis Majoris", 399, -27);
             
             // Initialise stars of Canis Minor
-            value[253] = new Star("Procyon", 456, 5, ProcyonColor, StarProperties.Double);
+            value[253] = new Star("Procyon", 456, 5, ProcyonColour, StarProperties.Double);
             value[254] = new Star("Beta Canis Minoris", 445, 8);
             value[255] = new Star("Gamma Canis Minoris", 446, 9, StarProperties.Double);
             value[256] = new Star("Delta 1 Canis Minoris", 447, 2);
@@ -723,6 +723,47 @@ namespace SkyWatcher {
             value[466] = new Star("Delta Crucis", 731, -59);
             value[467] = new Star("Epsilon Crucis", 747, -60);
             value[468] = new Star("Zeta Crucis", 749, -65);
+            value[469] = new Star("Eta Crucis", 731, -65, StarProperties.Double);
+            value[470] = new Star("Theta Crucis", 723, -64, StarProperties.Double);
+            
+            // Initialise stars of Cygnus
+            value[472] = new Star("Deneb", 1240, 45);
+            value[473] = new Star("Albireo", 1168, 27, AlbireoColour, StarProperties.Double);
+            value[474] = new Star("Sadr", 1226, 40, StarProperties.Double);
+            value[475] = new Star("Delta Cygni", 1182, 45, StarProperties.Double);
+            value[476] = new Star("Epsilon Cygni", 1241, 33, StarProperties.Double);
+            value[477] = new Group("Northern Cross", new int[5]{472, 473, 474, 475, 476});
+            value[478] = new Star("Zeta Cygni", 1278, 30);
+            value[479] = new Star("Epsilon Cygni", 1198, 35, StarProperties.Double);
+            value[480] = new Star("Theta Cygni", 1177, 50);
+            value[481] = new Star("Iota Cygni", 1168, 51);
+            value[482] = new Star("Kappa Cygni", 1160, 54);
+            value[483] = new Star("Lambda Cygni", 1161, 36, StarProperties.Double);
+            value[484] = new Star("Mu Cygni", 1302, 29, StarProperties.Double);
+            value[485] = new Star("Nu Cygni", 1258, 41);
+            value[486] = new Star("Csi Cygni", 1267, 44);
+            value[487] = new Star("Omicron 1 Cygni", 1220, 46);
+            value[488] = new Star("Omicron 2 Cygni", 1221, 48);
+            value[489] = new Star("Pi 1 Cygni", 1295, 51);
+            value[490] = new Star("Pi 2 Cygni", 1305, 49);
+            value[491] = new Star("Rho Cygni", 1292, 45);
+            value[492] = new Star("R Cygni", 1174, 50, StarProperties.VariableMagnitude);
+            value[493] = new Star("RT Cygni", 1181, 49, StarProperties.VariableMagnitude);
+            value[494] = new Star("Sigma Cygni", 1280, 39);
+            value[495] = new Star("Tau Cygni", 1278, 38, StarProperties.Double);
+            value[496] = new Star("Chi Cygni", 1189, 33, StarProperties.VariableMagnitude);
+            value[497] = new Star("Phi Cygni", 1179, 30);
+            value[498] = new Star("Psi Cygni", 1189, 53, StarProeprties.Double);
+            value[499] = new Star("Omega 1 Cygni", 1232, 48);
+            value[500] = new Star("Omega 2 Cygni", 1230, 49);
+            
+            // Initialise stars of Delphinus
+            value[502] = new Star("Alpha Delphini", 1240, 16, StarProperties.Double);
+            value[503] = new Star("Beta Delphini", 1239, 15, StarProperties.Double);
+            value[504] = new Star("Gamma Delphini", 1245, 16, StarProperties.Double);
+            value[505] = new Star("Delta Delphini", 1241, 15);
+            value[506] = new Star("Epsilon Delphini", 1232, 15);
+            value[507] = new Star("R Delphini", 1217, 9, StarProperties.VariableMagnitude);
             
             // Initialise constellations (second time)
             value[375] = new Constellation("Cetus", 376, 393, "Ceti");
@@ -734,7 +775,9 @@ namespace SkyWatcher {
             value[436] = new Constellation("Corona Borealis", 437, 443, "Coronae Borealis");
             value[444] = new Constellation("Corvus", 445, 450, "Corvi");
             value[451] = new Constellation("Crater", 452, 461, "Crater");
-            value[462] = new Constellation("Crux", 463, 468, "Crucis");
+            value[462] = new Constellation("Crux", 463, 470, "Crucis");
+            value[471] = new Constellation("Cygnus", 472, 500, "Cygni");
+            value[501] = new Constellation("Delphinus", 502, 507, "Delphini");
         }
         public static void InitialiseLibrary3(SkyObject[] value) {
             // This method is for extra constellations.
@@ -749,8 +792,21 @@ namespace SkyWatcher {
             // For technical reasons, a method only supports 20 constellations at once.
         }
         public static void InitialiseLibrary6(SkyObject[] value) {
-            // This method is for initialising Messier objects.
+            // This method is for initialising Messier objects and magnitudes.
             // For technical reasons, a method only supports 20 constellations at once.
+            value[231].Magnitude = -1.46;
+            value[288].Magnitude = -0.72;
+            value[331].Magnitude = -0.01;
+            value[158].Magnitude = -0.04;
+            value[136].Magnitude = 0.08;
+            value[253].Magnitude = 0.8;
+            value[332].Magnitude = 0.66;
+            value[72].Magnitude = 0.77;
+            value[463].Magnitude = 0.87;
+            value[472].Magnitude = 1.25;
+            value[464].Magnitude = 1.28;
+            value[235].Magnitude = 1.50;
+            value[234].Magnitude = 2.12;
         }
         public static Constellation Andromeda {
             get {
@@ -866,7 +922,9 @@ namespace SkyWatcher {
             }
         }
         public static int CentaurusLocation = 329;
-        public static Color ArcturusColor = Color.FromArgb(255, 226, 0);
-        public static Color ProcyonColor = Color.FromArgb(255, 226, 0);
+        public static Color ArcturusColour = Color.FromArgb(255, 226, 0);
+        public static Color ProcyonColour = Color.FromArgb(255, 226, 0);
+        public static Color AlbireoColour = Color.FromArgb(255, 226, 0);
     }
 }
+
