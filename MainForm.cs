@@ -1,4 +1,3 @@
-
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -40,7 +39,7 @@ namespace SkyWatcher
             //
             SkyPositionX = (int)(x);
             SkyPositionY = (int)(y);
-            InitializeDataGridView();
+            InitialiseDataGridView();
 
             // Remove remainders for correct positioning
             double xrem = Math.IEEERemainder(SkyPositionX, 60);
@@ -67,7 +66,7 @@ namespace SkyWatcher
             int y = (int)(result.Dec);
             SkyPositionX = (int)(x);
             SkyPositionY = (int)(y);
-            InitializeDataGridView();
+            InitialiseDataGridView();
 
             // Remove remainders for correct positioning
             double xrem = Math.IEEERemainder(SkyPositionX, 60);
@@ -87,7 +86,7 @@ namespace SkyWatcher
             label5.Text = (SkyPositionY - 20) + degreeChar;
             OpenSettingsForm();
         }
-        public void InitializeDataGridView() {
+        public void InitialiseDataGridView() {
             dataGridView1.RowCount = 3;
         }
         void DataGridView1CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -112,15 +111,12 @@ namespace SkyWatcher
                         location.Y -= 2;
                         Control controlToAdd = new Control(this, String.Empty);
                         controlToAdd.Location = location;
-                        controlToAdd.BackColor = currentStar.CustomColor;
+                        controlToAdd.BackColor = currentStar.CustomColour;
                         controlToAdd.Size = new Size(5, 5);
                         controlToAdd.Click += StarClicked;
                         controlToAdd.Name = currentStar.Name;
                         controlToAdd.TabIndex = Controls.Count;
                         if (currentStar.IsNamed) {
-                            controlToAdd.Location.Offset(-1, -1);
-                            controlToAdd.Size = Size.Add(controlToAdd.Size, new Size(2, 2));
-                            controlToAdd.TabIndex++;
                             Label nameLabel = new Label();
                             nameLabel.Location = controlToAdd.Location;
                             nameLabel.Location.Offset(4, 4);
@@ -130,8 +126,13 @@ namespace SkyWatcher
                             nameLabel.Text = currentStar.Name;
                             nameLabel.TabIndex = Controls.Count;
                             AddedStars++;
+                            controlToAdd.TabIndex++;
                             Controls.Add(nameLabel);
                             Controls[Controls.Count - 1].BringToFront();
+                        }
+                        if (currentStar.Magnitude < 3) {
+                            controlToAdd.Location.Offset(-1, -1);
+                            controlToAdd.Size = Size.Add(controlToAdd.Size, new Size(2, 2));
                         }
                         Controls.Add(controlToAdd);
                         int index = Controls.Count - 1;
@@ -182,7 +183,7 @@ namespace SkyWatcher
             label3.Text = SkyPositionY + degreeChar;
             label4.Text = (SkyPositionY - 10) + degreeChar;
             label5.Text = (SkyPositionY - 20) + degreeChar;
-            InitializeDataGridView();
+            InitialiseDataGridView();
             MakeStars();
         }
         void StarClicked(object sender, EventArgs e) {
@@ -200,6 +201,7 @@ namespace SkyWatcher
             switch (target.Properties) {
                 case StarProperties.Double: properties = nl + "This star is a binary system."; break;
                 case StarProperties.VariableMagnitude: properties = nl + "This star has variable magnitude."; break;
+                case StarProperties.Double | StarProperties.VariableMagnitude: properties = nl + "This is a binary system where each of the members periodically eclipses the other.";
             }
             label.Text = target + "Constellation: " + target.GetConstellation() + nl + "Best month to see (considering observation at midnight): " + target.GetBestMonth() + properties;
             label.Font = new Font("Segoe UI", 18);
@@ -226,7 +228,7 @@ namespace SkyWatcher
             label3.Text = SkyPositionY + degreeChar;
             label4.Text = (SkyPositionY - 10) + degreeChar;
             label5.Text = (SkyPositionY - 20) + degreeChar;
-            InitializeDataGridView();
+            InitialiseDataGridView();
             MakeStars();
         }
         public void OpenSettingsForm() {
@@ -284,7 +286,7 @@ namespace SkyWatcher
             }
             return return_value;
         }
-
+        
         public void Add(IComponent component)
         {
             if (!(component is Control)) {
