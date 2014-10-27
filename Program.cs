@@ -1,4 +1,4 @@
-// SkyWatcher initialization
+// SkyWatcher initialisation
 
 using System;
 using System.IO;
@@ -12,7 +12,7 @@ namespace SkyWatcher
         public static void Main(string[] args)
         {
             CheckArguments(args);
-            SkyObjectLibrary.InitializeLibrary();
+            SkyObjectLibrary.InitialiseLibrary();
             Console.SetIn(TextReader.Synchronized(new StreamReader(Console.OpenStandardInput(1024), Console.OutputEncoding, false, 1024, true)));
             Console.WriteLine("SkyWatcher v1.0 with UI Complete (@ 2014-10-08 19:50) Luismark");
             if (args.Length == 2)
