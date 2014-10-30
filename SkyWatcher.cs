@@ -788,6 +788,7 @@ namespace SkyWatcher {
             value[462] = new Constellation("Crux", 463, 470, "Crucis");
             value[471] = new Constellation("Cygnus", 472, 500, "Cygni");
             value[501] = new Constellation("Delphinus", 502, 507, "Delphini");
+            value[508] = new Constellation("Dorado", 509, 516, "Doradus");
         }
         public static void InitialiseLibrary3(SkyObject[] value) {
             // This method is for extra constellations.
