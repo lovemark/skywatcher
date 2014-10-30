@@ -765,6 +765,16 @@ namespace SkyWatcher {
             value[506] = new Star("Epsilon Delphini", 1232, 15);
             value[507] = new Star("R Delphini", 1217, 9, StarProperties.VariableMagnitude);
             
+            // Initialise stars of Dorado
+            value[509] = new Star("Alpha Doradus", 275, -55);
+            value[510] = new Star("Beta Doradus", 331, -62, StarProperties.VariableMagnitude);
+            value[511] = new Star("Gamma Doradus", 261, -51);
+            value[512] = new Star("Delta Doradus", 335, -66);
+            value[513] = new Star("Epsilon Doradus", 341, -67);
+            value[514] = new Star("Zeta Doradus", 302, -57);
+            value[515] = new Star("R Doradus", 282, -62, StarProperties.VariableMagnitude);
+            value[516] = new Star("S Doradus", 317, -69);
+            
             // Initialise constellations (second time)
             value[375] = new Constellation("Cetus", 376, 393, "Ceti");
             value[394] = new Constellation("Chamaeleon", 395, 404, "Chamaeleontis");
