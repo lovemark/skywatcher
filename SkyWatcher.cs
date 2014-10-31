@@ -20,7 +20,7 @@ namespace SkyWatcher {
     [ComVisible(true)]
     public class Star : SkyObject {
         public static int readystars;
-        public static int totalstars = 451;
+        public static int totalstars = 516;
         public double RA;
         public double RA2;
         public double Dec;
@@ -765,6 +765,16 @@ namespace SkyWatcher {
             value[506] = new Star("Epsilon Delphini", 1232, 15);
             value[507] = new Star("R Delphini", 1217, 9, StarProperties.VariableMagnitude);
             
+            // Initialise stars of Dorado
+            value[509] = new Star("Alpha Doradus", 275, -55);
+            value[510] = new Star("Beta Doradus", 331, -62, StarProperties.VariableMagnitude);
+            value[511] = new Star("Gamma Doradus", 261, -51);
+            value[512] = new Star("Delta Doradus", 335, -66);
+            value[513] = new Star("Epsilon Doradus", 341, -67);
+            value[514] = new Star("Zeta Doradus", 302, -57);
+            value[515] = new Star("R Doradus", 282, -62, StarProperties.VariableMagnitude);
+            value[516] = new Star("S Doradus", 317, -69);
+            
             // Initialise constellations (second time)
             value[375] = new Constellation("Cetus", 376, 393, "Ceti");
             value[394] = new Constellation("Chamaeleon", 395, 404, "Chamaeleontis");
@@ -778,6 +788,7 @@ namespace SkyWatcher {
             value[462] = new Constellation("Crux", 463, 470, "Crucis");
             value[471] = new Constellation("Cygnus", 472, 500, "Cygni");
             value[501] = new Constellation("Delphinus", 502, 507, "Delphini");
+            value[508] = new Constellation("Dorado", 509, 516, "Doradus");
         }
         public static void InitialiseLibrary3(SkyObject[] value) {
             // This method is for extra constellations.
