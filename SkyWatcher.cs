@@ -20,7 +20,7 @@ namespace SkyWatcher {
     [ComVisible(true)]
     public class Star : SkyObject {
         public static int readystars;
-        public static int totalstars = 451;
+        public static int totalstars = 516;
         public double RA;
         public double RA2;
         public double Dec;
