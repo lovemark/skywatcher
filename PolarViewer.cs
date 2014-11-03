@@ -21,7 +21,7 @@ namespace SkyWatcher {
                     isSouth = !isSouth;
                     MakeStars();
                 }
-            }
+            };
         }
         public void MakeStars() {
             const double TAU = 2 * Math.PI;
@@ -30,14 +30,14 @@ namespace SkyWatcher {
             }
             for (int j = 0; j < Star.totalstars; j++) {
                 try {
-                    Star result = SkyObjectLibrary.GetItem(j);
-                    if (Math.Abs(j.Dec) < 50 || (isSouth ^ (j.Dec / Math.Abs(j.Dec) == 1))) {
+                    Star result = (Star)(SkyObjectLibrary.GetItem(j));
+                    if (Math.Abs(result.Dec) < 50 || (isSouth ^ (result.Dec / Math.Abs(result.Dec) == 1))) {
                         if (isSouth) {
-                            double x = -300 * Math.Cos(0.261799387799149 * j.RA) + 300;
-                            double y = 300 * Math.Sin(0.261799387799149 * j.RA) + 300;
+                            double x = -300 * Math.Cos(0.261799387799149 * result.RA) + 300;
+                            double y = 300 * Math.Sin(0.261799387799149 * result.RA) + 300;
                         } else {
-                            double x = -300 * Math.Cos(TAU - (0.261799387799149 * j.RA)) + 300;
-                            double y = 300 * Math.Sin(TAU - (0.261799387799149 * j.RA)) + 300;
+                            double x = -300 * Math.Cos(TAU - (0.261799387799149 * result.RA)) + 300;
+                            double y = 300 * Math.Sin(TAU - (0.261799387799149 * result.RA)) + 300;
                         }
                     }
                 } catch {
