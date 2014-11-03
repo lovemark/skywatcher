@@ -201,7 +201,7 @@ namespace SkyWatcher
             switch (target.Properties) {
                 case StarProperties.Double: properties = nl + "This star is a binary system."; break;
                 case StarProperties.VariableMagnitude: properties = nl + "This star has variable magnitude."; break;
-                case StarProperties.Double | StarProperties.VariableMagnitude: properties = nl + "This is a binary system where each of the members periodically eclipses the other.";
+                case StarProperties.Double | StarProperties.VariableMagnitude: properties = nl + "This is a binary system where each of the members periodically eclipses the other."; break;
             }
             label.Text = target + "Constellation: " + target.GetConstellation() + nl + "Best month to see (considering observation at midnight): " + target.GetBestMonth() + properties;
             label.Font = new Font("Segoe UI", 18);
@@ -327,3 +327,4 @@ namespace SkyWatcher
         }
     }
 }
+
