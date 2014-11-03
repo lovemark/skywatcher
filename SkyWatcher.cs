@@ -7,6 +7,7 @@ using System.Windows.Forms;
 namespace SkyWatcher {
     public class SkyObject {
         public string Name;
+        public double Magnitude;
         public SkyObject() {
             
         }
@@ -95,7 +96,7 @@ namespace SkyWatcher {
             int ra = (int)(Math.Round(RA * 60));
             int dec1 = (int)(Math.Truncate(Dec));
             int dec2 = (int)(Math.Truncate(Dec / 24) - Math.Truncate(Dec / 1440));
-            return new Guid(last_index, 0, 24576, 128, 0, (byte)(ra & 255), (byte)(ra / 256), dec1, dec2, 0, 0);
+            return new Guid(SkyObjectLibrary.last_index, 0, 24576, 128, 0, (byte)(ra & 255), (byte)(ra / 256), (byte)(dec1), (byte)(dec2), 0, 0);
         }
     }
     [Flags]
@@ -471,7 +472,7 @@ namespace SkyWatcher {
             value[274] = new Star("Mu Capricorni", 1312, -14);
             value[275] = new Star("Nu Capricorni", 1220, -13, StarProperties.Double);
             value[276] = new Star("Csi Capricorni", 1212, -13, StarProperties.Double);
-            value[277] = new Star("Omicron Capricorni", -18, StarProperties.Double);
+            value[277] = new Star("Omicron Capricorni", 1228, -18, StarProperties.Double);
             value[278] = new Star("Pi Capricorni", 1245, -18, StarProperties.Double);
             value[279] = new Star("Rho Capricorni", 1246, -18, StarProperties.Double);
             value[280] = new Star("RT Capricorni", 1219, -22, StarProperties.VariableMagnitude);
@@ -753,7 +754,7 @@ namespace SkyWatcher {
             value[495] = new Star("Tau Cygni", 1278, 38, StarProperties.Double);
             value[496] = new Star("Chi Cygni", 1189, 33, StarProperties.VariableMagnitude);
             value[497] = new Star("Phi Cygni", 1179, 30);
-            value[498] = new Star("Psi Cygni", 1189, 53, StarProeprties.Double);
+            value[498] = new Star("Psi Cygni", 1189, 53, StarProperties.Double);
             value[499] = new Star("Omega 1 Cygni", 1232, 48);
             value[500] = new Star("Omega 2 Cygni", 1230, 49);
             
@@ -938,4 +939,3 @@ namespace SkyWatcher {
         public static Color AlbireoColour = Color.FromArgb(255, 226, 0);
     }
 }
-
