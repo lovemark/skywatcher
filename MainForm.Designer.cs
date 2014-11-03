@@ -159,7 +159,7 @@ namespace SkyWatcher
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += delegate(object sender, System.EventArgs e) {
                 (new PolarViewer()).Show();
-            }
+            };
             // 
             // MainForm
             // 
