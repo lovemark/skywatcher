@@ -11,5 +11,3 @@ Advantages over Google Earth Sky Viewer:
   * It's smaller (my size limit is 1 MB and Google Earth doesn't fit that limit).
 
 [luis140219](https://github.com/luis140219) and [barbara141004](https://github.com/barbara141004) are merging manually pull requests, checking every SkyObject added by other users.
-
-(Dummy commit)
