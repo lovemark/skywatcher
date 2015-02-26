@@ -8,9 +8,9 @@ namespace SkyWatcher {
         public PolarViewer() {
             Text = "SkyWatcher Polar Viewer";
             Size = new Size(600, 600);
-            
+
             MessageBox.Show("Click in the center of the Polar Viewer Window to switch between North and South poles.");
-            
+
             VisibleChanged += delegate(object sender, EventArgs e) {
                 if (Visible) {
                     MakeStars();
@@ -38,14 +38,6 @@ namespace SkyWatcher {
                         } else {
                             double x = -300 * Math.Cos(TAU - (0.261799387799149 * result.RA)) + 300;
                             double y = 300 * Math.Sin(TAU - (0.261799387799149 * result.RA)) + 300;
-                    Star result = SkyObjectLibrary.GetItem(j);
-                    if (Math.Abs(j.Dec) < 50 || (isSouth ^ (j.Dec / Math.Abs(j.Dec) == 1))) {
-                        if (isSouth) {
-                            double x = -300 * Math.Cos(0.261799387799149 * j.RA) + 300;
-                            double y = 300 * Math.Sin(0.261799387799149 * j.RA) + 300;
-                        } else {
-                            double x = -300 * Math.Cos(TAU - (0.261799387799149 * j.RA)) + 300;
-                            double y = 300 * Math.Sin(TAU - (0.261799387799149 * j.RA)) + 300;
                         }
                     }
                 } catch {
@@ -53,10 +45,6 @@ namespace SkyWatcher {
                 }
             }
         }
-        
+
     }
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/gh-pages

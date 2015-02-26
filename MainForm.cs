@@ -116,7 +116,7 @@ namespace SkyWatcher
                         controlToAdd.Click += StarClicked;
                         controlToAdd.Name = currentStar.Name;
                         controlToAdd.TabIndex = Controls.Count;
-                        if (currentStar.IsNamed) {
+                        if (!currentStar.Name.Contains(currentStar.GetConstellation().Genitive) && currentStar.IsNamed) {
                             Label nameLabel = new Label();
                             nameLabel.Location = controlToAdd.Location;
                             nameLabel.Location.Offset(4, 4);
@@ -286,7 +286,7 @@ namespace SkyWatcher
             }
             return return_value;
         }
-        
+
         public void Add(IComponent component)
         {
             if (!(component is Control)) {
@@ -294,7 +294,7 @@ namespace SkyWatcher
             }
             Controls.Add((Control)(component));
         }
-        
+
         public void Add(IComponent component, string name)
         {
             if (!(component is Control)) {
@@ -302,7 +302,7 @@ namespace SkyWatcher
             }
             Controls.Add((Control)(component));
         }
-        
+
         public void Remove(IComponent component)
         {
             if (!(component is Control)) {
@@ -310,7 +310,7 @@ namespace SkyWatcher
             }
             Controls.Remove((Control)(component));
         }
-        
+
         public ComponentCollection Components {
             get {
                 Component[] result = new Component[Controls.Count];

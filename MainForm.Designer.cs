@@ -24,9 +24,9 @@ namespace SkyWatcher
             this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // dataGridView1
-            // 
+            //
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
@@ -55,29 +55,29 @@ namespace SkyWatcher
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellContentClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1CellContentClick);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ChangeLocation);
-            // 
+            //
             // Column1
-            // 
+            //
             this.Column1.HeaderText = "Column1";
             this.Column1.Name = "Column1";
             this.Column1.Width = 300;
-            // 
+            //
             // Column2
-            // 
+            //
             this.Column2.HeaderText = "Column2";
             this.Column2.Name = "Column2";
             this.Column2.Width = 300;
-            // 
+            //
             // textBox1
-            // 
+            //
             this.textBox1.Location = new System.Drawing.Point(0, 0);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "Altair";
-            // 
+            //
             // button1
-            // 
+            //
             this.button1.BackColor = System.Drawing.SystemColors.Control;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.button1.Location = new System.Drawing.Point(107, 0);
@@ -87,9 +87,9 @@ namespace SkyWatcher
             this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.Button1Click);
-            // 
+            //
             // label1
-            // 
+            //
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.MidnightBlue;
             this.label1.ForeColor = System.Drawing.Color.White;
@@ -99,9 +99,9 @@ namespace SkyWatcher
             this.label1.TabIndex = 3;
             this.label1.Text = "label1";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
+            //
             // label2
-            // 
+            //
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.MidnightBlue;
             this.label2.ForeColor = System.Drawing.Color.White;
@@ -111,9 +111,9 @@ namespace SkyWatcher
             this.label2.TabIndex = 4;
             this.label2.Text = "label2";
             this.label2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
+            //
             // label3
-            // 
+            //
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.MidnightBlue;
             this.label3.ForeColor = System.Drawing.Color.White;
@@ -123,9 +123,9 @@ namespace SkyWatcher
             this.label3.TabIndex = 5;
             this.label3.Text = "label3";
             this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
+            //
             // label4
-            // 
+            //
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.MidnightBlue;
             this.label4.ForeColor = System.Drawing.Color.White;
@@ -135,9 +135,9 @@ namespace SkyWatcher
             this.label4.TabIndex = 6;
             this.label4.Text = "label4";
             this.label4.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
+            //
             // label5
-            // 
+            //
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.MidnightBlue;
             this.label5.ForeColor = System.Drawing.Color.White;
@@ -157,12 +157,10 @@ namespace SkyWatcher
             this.button2.TabIndex = 8;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += delegate(object sender, System.EventArgs e) {
-                (new PolarViewer()).Show();
-            };
-            // 
+			this.button2.Click += (sender, e) => (new PolarViewer()).Show();
+            //
             // MainForm
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MidnightBlue;

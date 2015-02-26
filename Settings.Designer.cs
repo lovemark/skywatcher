@@ -7,7 +7,7 @@ namespace SkyWatcher
         /// Designer variable used to keep track of non-visual components.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        
+
         /// <summary>
         /// Disposes resources used by the form.
         /// </summary>
@@ -21,7 +21,7 @@ namespace SkyWatcher
             }
             base.Dispose(disposing);
         }
-        
+
         /// <summary>
         /// This method is required for Windows Forms designer support.
         /// Do not change the method contents inside the source code editor. The Forms designer might
@@ -37,34 +37,34 @@ namespace SkyWatcher
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
+            //
             // textBox1
-            // 
+            //
             this.textBox1.Location = new System.Drawing.Point(128, 3);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "Altair";
             this.textBox1.MouseLeave += new System.EventHandler(this.TextBox1TextChanged);
-            // 
+            //
             // label1
-            // 
+            //
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 23);
             this.label1.TabIndex = 1;
             this.label1.Text = "Star shown at launch";
-            // 
+            //
             // label2
-            // 
+            //
             this.label2.Location = new System.Drawing.Point(0, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 23);
             this.label2.TabIndex = 2;
             this.label2.Text = "Birth date";
-            // 
+            //
             // monthCalendar1
-            // 
+            //
             this.monthCalendar1.Location = new System.Drawing.Point(128, 24);
             this.monthCalendar1.MaxDate = new System.DateTime(2017, 12, 21, 0, 0, 0, 0);
             this.monthCalendar1.MaxSelectionCount = 3;
@@ -76,35 +76,35 @@ namespace SkyWatcher
             this.monthCalendar1.TitleBackColor = System.Drawing.Color.White;
             this.monthCalendar1.TrailingForeColor = System.Drawing.Color.Silver;
             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.MonthCalendar1DateChanged);
-            // 
+            //
             // label3
-            // 
+            //
             this.label3.Location = new System.Drawing.Point(0, 200);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 23);
             this.label3.TabIndex = 4;
             this.label3.Text = "Your star sign";
-            // 
+            //
             // textBox2
-            // 
+            //
             this.textBox2.Location = new System.Drawing.Point(128, 200);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 5;
             this.textBox2.Text = "Aquarius";
-            // 
+            //
             // button1
-            // 
+            //
             this.button1.Location = new System.Drawing.Point(240, 200);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 6;
             this.button1.Text = "Go";
             this.button1.Click += new System.EventHandler(this.GoToStarSign);
-            // 
+            //
             // Settings
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(418, 262);

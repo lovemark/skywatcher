@@ -1,0 +1,48 @@
+https://github.com/luismark/skywatcher
+
+I have an open issue #3. Anyone MUST fix it before the 8th of October.
+
+SkyWatcher Dynamics:
+
+Plane (with issue #3 open)
+Cylinder (with issue #3 closed)
+
+Fields of the Star class:
+
+string Name (The star's name)
+double RA (0 <= RA < 24)
+double Dec (90 >= Dec >= -90)
+Color displayColor (by default #46FFFF)
+StarProperties Properties (is binary system and/or has variable magnitude)
+
+Properties of the Star class:
+
+bool IsNamed (has no spaces and/or doesn't contain its constellation genitive)
+
+Example: Alpheratz
+
+Name = "Alpheratz"
+IsNamed = true
+RA = 0.18(3)
+Dec = 29.0
+displayColor = #46FFFF (Color.FromArgb(70, 255, 255)
+Properties = 1 (StarProperties.Double / binary system)
+
+Methods of the Star class:
+
+public int GetBestMonth()
+
+Returns a number between 1 and 12 that specifies the best month to see this star
+considering observation at midnight.
+
+public Constellation GetConstellation()
+
+Returns the constellation that this star belongs to.
+
+public Point GetLocation(double relative_ra, double relative_dec)
+
+Returns a System.Drawing.Point that specifies the form position of this star
+(if outside of the form, returns a location outside of the form).
+
+Maybe this method is the cause of the issue #3 I've mentioned earlier,
+or it's a method on tehe MainForm class?
