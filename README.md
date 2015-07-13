@@ -12,4 +12,4 @@ Advantages over Google Earth Sky Viewer:
 
 [luis140219](https://github.com/luis140219) and [barbara141004](https://github.com/barbara141004) are merging manually pull requests, checking every SkyObject added by other users.
 
-Almost in first anniversary!
+Has over 1 year of history!
