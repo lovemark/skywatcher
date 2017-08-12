@@ -33,14 +33,14 @@ namespace SkyWatcher
             // The InitializeComponent() call is required for Windows Forms designer support.
             //
             InitializeComponent();
-
+            //
             //
             // TODO: Add constructor code after the InitializeComponent() call.
             //
             SkyPositionX = (int)(x);
             SkyPositionY = (int)(y);
             InitialiseDataGridView();
-
+            //
             // Remove remainders for correct positioning
             double xrem = Math.IEEERemainder(SkyPositionX, 60);
             double yrem = Math.IEEERemainder(SkyPositionY, 10);
@@ -53,7 +53,7 @@ namespace SkyWatcher
                 SkyPositionY += 10;
             }
             label1.Text = (SkyPositionX / 60) + "h";
-            label2.Text = ((SkyPositionX - 1) / 60) + "h";
+            label2.Text = ((SkyPositionX - 60) / 60) + "h";
             label3.Text = SkyPositionY + degreeChar;
             label4.Text = (SkyPositionY - 10) + degreeChar;
             label5.Text = (SkyPositionY - 20) + degreeChar;
@@ -79,15 +79,22 @@ namespace SkyWatcher
                 SkyPositionY -= (int)(yrem);
                 SkyPositionY += 10;
             }
+            int middle_ra = (SkyPositionX - 1) / 60;
+            if (middle_ra < 0) middle_ra += 24;
             label1.Text = (SkyPositionX / 60) + "h";
-            label2.Text = ((SkyPositionX - 1) / 60) + "h";
+            label2.Text = middle_ra + "h";
             label3.Text = SkyPositionY + degreeChar;
             label4.Text = (SkyPositionY - 10) + degreeChar;
             label5.Text = (SkyPositionY - 20) + degreeChar;
             OpenSettingsForm();
         }
         public void InitialiseDataGridView() {
-            dataGridView1.RowCount = 3;
+            dataGridView1.Size = new Size(ClientSize.Width, ClientSize.Height);
+            dataGridView1.RowCount = (Rows = (int)(Math.Floor(((double)(ClientSize.Height)) / 200)));
+            dataGridView1.ColumnCount = (Columns = (int)(Math.Floor(((double)(ClientSize.Width)) / 300)));
+            for (int i = 0; i < Columns; i++) {
+                dataGridView1.Columns[i].Width = 300;
+            }
         }
         void DataGridView1CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -98,10 +105,16 @@ namespace SkyWatcher
             Invalidate(new Region(new Rectangle(minX, minY, maxX - minX, maxY - minY)));
             for (int i = 0; i < Star.totalstars; i++) {
                 try {
-                    Star currentStar = (Star)(SkyObjectLibrary.GetItem(i));
+                    SkyObject currentObject = SkyObjectLibrary.GetItem(i);
+                    Star currentStar;
+                    if (currentObject is Star) {
+                        currentStar = (Star)(SkyObjectLibrary.GetItem(i));
+                    } else {
+                        currentStar = (Star)(((IGroup)(currentObject)).GetStars()[0]);
+                    }
                     Point location = currentStar.GetLocation(SkyPositionX, SkyPositionY);
                     Point location2 = currentStar.GetLocation2(SkyPositionX, SkyPositionY);
-                    if (((location.X >= minX) && (location.Y >= minY) && (location.X < maxX) && (location.Y < maxY)) || (location2.X >= minX) && (location2.X < maxX) && (location2.Y >= minY) && (location2.Y < minY)) {
+                    if (((location.X >= minX) && (location.Y >= minY) && (location.X < maxX) && (location.Y < maxY)) || ((location2.X >= minX) && (location2.X < maxX) && (location2.Y >= minY) && (location2.Y < minY) && (LocationSetter(ref location, ref location2)))) {
                         AddedStars++;
                         Star[] temp = AddedStarsTable;
                         AddedStarsTable = new Star[AddedStarsTable.Length + 1];
@@ -116,7 +129,11 @@ namespace SkyWatcher
                         controlToAdd.Click += StarClicked;
                         controlToAdd.Name = currentStar.Name;
                         controlToAdd.TabIndex = Controls.Count;
-                        if (!currentStar.Name.Contains(currentStar.GetConstellation().Genitive) && currentStar.IsNamed) {
+                        if (currentStar.Magnitude < 3) {
+                            controlToAdd.Location.Offset(-1, -1);
+                            controlToAdd.Size = new Size(7, 7);
+                        }
+                        if (ShowingStarNames && currentStar.IsNamed) {
                             Label nameLabel = new Label();
                             nameLabel.Location = controlToAdd.Location;
                             nameLabel.Location.Offset(4, 4);
@@ -166,7 +183,6 @@ namespace SkyWatcher
             SkyPositionX = (int)(x);
             SkyPositionY = (int)(y);
             StartChangingLocation();
-
             // Remove remainders for correct positioning
             double xrem = Math.IEEERemainder(SkyPositionX, 60);
             double yrem = Math.IEEERemainder(SkyPositionY, 10);
@@ -178,8 +194,10 @@ namespace SkyWatcher
                 SkyPositionY -= (int)(yrem);
                 SkyPositionY += 10;
             }
+            int middle_ra = (SkyPositionX - 60) / 60;
+            if (middle_ra < 0) middle_ra += 24;
             label1.Text = (SkyPositionX / 60) + "h";
-            label2.Text = ((SkyPositionX - 1) / 60) + "h";
+            label2.Text = middle_ra + "h";
             label3.Text = SkyPositionY + degreeChar;
             label4.Text = (SkyPositionY - 10) + degreeChar;
             label5.Text = (SkyPositionY - 20) + degreeChar;
@@ -208,6 +226,7 @@ namespace SkyWatcher
             starInfo.Controls.Add(label);
             starInfo.Show();
         }
+        internal bool ShowingStarNames = true;
         public void ChangeLocation(object sender, KeyEventArgs e) {
             Keys key = e.KeyCode;
             switch (key) {
@@ -216,6 +235,7 @@ namespace SkyWatcher
                 case Keys.Up: SkyPositionY += 10; break;
                 case Keys.Down: SkyPositionY -= 10; break;
                 case Keys.Enter: button1.PerformClick(); break;
+                case Keys.Space: ShowingStarNames = !ShowingStarNames; break;
                 default: return;
             }
             if (SkyPositionX < 0) SkyPositionX += 1440;
@@ -239,8 +259,8 @@ namespace SkyWatcher
             }
         }
         public void MakeStars() {
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 2; j++) {
+            for (int i = 0; i < Columns; i++) {
+                for (int j = 0; j < Rows; j++) {
                     DataGridView1CellContentClick(dataGridView1, new DataGridViewCellEventArgs(j, i));
                 }
             }
@@ -286,7 +306,6 @@ namespace SkyWatcher
             }
             return return_value;
         }
-
         public void Add(IComponent component)
         {
             if (!(component is Control)) {
@@ -294,7 +313,6 @@ namespace SkyWatcher
             }
             Controls.Add((Control)(component));
         }
-
         public void Add(IComponent component, string name)
         {
             if (!(component is Control)) {
@@ -302,7 +320,6 @@ namespace SkyWatcher
             }
             Controls.Add((Control)(component));
         }
-
         public void Remove(IComponent component)
         {
             if (!(component is Control)) {
@@ -310,7 +327,6 @@ namespace SkyWatcher
             }
             Controls.Remove((Control)(component));
         }
-
         public ComponentCollection Components {
             get {
                 Component[] result = new Component[Controls.Count];
@@ -325,6 +341,21 @@ namespace SkyWatcher
             button1.PerformClick();
             button1.PerformClick();
         }
+        void button2_Click(object sender, EventArgs e) {
+            (new PolarViewer()).Show();
+        }
+        public int Columns;
+        public int Rows;
+        void MainForm_Resize(object sender, EventArgs e) {
+            InitialiseDataGridView();
+            MakeStars();
+        }
+        bool LocationSetter(ref Point x, ref Point y)
+        {
+            x = y;
+            x.X = y.X;
+            x.Y = y.Y;
+            return true;
+        }
     }
 }
-

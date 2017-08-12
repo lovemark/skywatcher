@@ -14,7 +14,7 @@ namespace SkyWatcher
             CheckArguments(args);
             SkyObjectLibrary.InitialiseLibrary();
             Console.SetIn(TextReader.Synchronized(new StreamReader(Console.OpenStandardInput(1024), Console.OutputEncoding, false, 1024, true)));
-            Console.WriteLine("SkyWatcher v1.0 with UI Complete (@ 2014-10-08 19:50) Luismark");
+            Console.WriteLine("SkyWatcher v1.0 with UI Complete (@ 2017-06-02 17:01) Luismark");
             if (args.Length == 2)
                 myForm = new MainForm(int.Parse(args[0]), int.Parse(args[1]));
             if (args.Length == 1)
