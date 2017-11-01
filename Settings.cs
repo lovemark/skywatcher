@@ -1,5 +1,4 @@
 
-using SkyWatcher.Properties;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -18,17 +17,17 @@ namespace SkyWatcher
             //
             InitializeComponent();
             InitializeButton2();
-
+            
             //
             // TODO: Add constructor code after the InitializeComponent() call.
             //
-            textBox1.Text = Settings1.Default.CurrentStar;
+            textBox1.Text = Properties.Settings.Default.CurrentStar;
             monthCalendar1.MaxDate = DateTime.Now.Date;
-            monthCalendar1.TodayDate = Settings1.Default.BirthDate;
+            monthCalendar1.TodayDate = Properties.Settings.Default.BirthDate;
         }
         void TextBox1TextChanged(object sender, EventArgs e)
         {
-            Settings1.Default.CurrentStar = textBox1.Text;
+            Properties.Settings.Default.CurrentStar = textBox1.Text;
         }
         void MonthCalendar1DateChanged(object sender, DateRangeEventArgs e)
         {
